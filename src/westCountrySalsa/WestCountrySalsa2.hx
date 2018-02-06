@@ -39,9 +39,18 @@ class WestCountrySalsa2 {
         layout();
         var mouseAndKey = new MouseAndKey();
         mouseAndKey.change = checkTextHit;
+        dirty();
+    }
+    /** old setup with tweening 
+    public function setup(){
+        createText();
+        layout();
+        var mouseAndKey = new MouseAndKey();
+        mouseAndKey.change = checkTextHit;
         var contact_ = contactTxt;
         var thursday = thursdayTxt;
         var sunday = sundayTxt;
+
         if( scale == 1. ){
             TweenX.to( this,{ imgAlpha: 1. } ).delay( 0.5 ).time( 0.8 ).ease( EaseX.quadIn );
             TweenX.to( this,{ val: 1. } ).delay( 0.72 ).time( 0.65 ).ease( EaseX.quadIn ).onUpdate( function(){
@@ -64,6 +73,8 @@ class WestCountrySalsa2 {
         }
         dirty();
     }
+    */
+
     var dh: Float;
     var imgX: Float;
     var imgY: Float;
@@ -123,10 +134,10 @@ class WestCountrySalsa2 {
             thursdayTxt.fontStyle.alpha = 0.;
             salsaClassesTxt.fontStyle.alpha = 1.;
         } else {
-            if( tweening == false ){
+            //if( tweening == false ){
                 sundayTxt.fontStyle.alpha = 1.;
                 thursdayTxt.fontStyle.alpha = 1.;
-            }
+            //}
             salsaClassesTxt.fontStyle.alpha = 0.;
         }
         img = Assets.images.westCountrySalsa2icon2;
@@ -167,9 +178,28 @@ class WestCountrySalsa2 {
         localHi = mainHi;
         dirty();
     }
+
+    function createText(){
+        var latinoSundays = new LatinoSundays();
+        sundayTxt = latinoSundays.txt;
+        allTxt.push( sundayTxt );
+        var salsaThursdays = new SalsaThursdays();
+        thursdayTxt = salsaThursdays.txt;
+        allTxt.push( thursdayTxt );
+        var salsaClasses = new SalsaClasses();
+        salsaClassesTxt = salsaClasses.txt;
+        allTxt.push( salsaClassesTxt );
+        var title = new Title();
+        titleTxt = title.txt;
+        var contact = new Contact();
+        contactTxt = contact.txt;
+        allTxt.push( contactTxt );
+    }
+    /* old with tweens 
     var tweening: Bool = true;
     var val: Float = 0.8;
     var imgAlpha: Float = 0.;
+
     function createText(){
         var latinoSundays = new LatinoSundays();
         sundayTxt = latinoSundays.txt;
@@ -204,7 +234,7 @@ class WestCountrySalsa2 {
         contactTxt = contact.txt;
         contactTxt.fontStyle.alpha = 0.;
         allTxt.push( contactTxt );
-    }
+    }*/
     function dirty(){
         for( t in allTxt ) t.dirty = true;
     }
@@ -234,9 +264,10 @@ class WestCountrySalsa2 {
         g2.color = Color.White;
         g2.opacity = 1.;
         if( scale > 0.2 ){
-            g2.opacity = imgAlpha;
-            g2.drawScaledImage( img, imgX, dh + ( imgAlpha - 1 )*10, Std.int( img.width * scale ), Std.int( img.height * scale ) );
-            g2.opacity = 1.;
+            // g2.opacity = imgAlpha;
+            // var tempH = dh + ( imgAlpha - 1 )*10
+            g2.drawScaledImage( img, imgX, dh, Std.int( img.width * scale ), Std.int( img.height * scale ) );
+            // g2.opacity = 1.;
         } else {
             if( localWid < 520 ){
                 titleTxt.wrapWidth = 200;
