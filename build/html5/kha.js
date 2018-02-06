@@ -2057,15 +2057,30 @@ js_html_compat_Uint8Array._subarray = function(start,end) {
 	return a;
 };
 var kha__$Assets_ImageList = function() {
-	this.names = ["westCountrySalsa2icon2"];
+	this.names = ["westCountrySalsa2static","westCountrySalsa2icon2"];
 	this.westCountrySalsa2icon2Description = { files : ["westCountrySalsa2icon2.png"], original_height : 518, type : "image", original_width : 446, name : "westCountrySalsa2icon2"};
 	this.westCountrySalsa2icon2Name = "westCountrySalsa2icon2";
 	this.westCountrySalsa2icon2 = null;
+	this.westCountrySalsa2staticDescription = { files : ["westCountrySalsa2static.jpg"], original_height : 768, type : "image", original_width : 1024, name : "westCountrySalsa2static"};
+	this.westCountrySalsa2staticName = "westCountrySalsa2static";
+	this.westCountrySalsa2static = null;
 };
 $hxClasses["kha._Assets.ImageList"] = kha__$Assets_ImageList;
 kha__$Assets_ImageList.__name__ = ["kha","_Assets","ImageList"];
 kha__$Assets_ImageList.prototype = {
-	westCountrySalsa2icon2: null
+	westCountrySalsa2static: null
+	,westCountrySalsa2staticName: null
+	,westCountrySalsa2staticDescription: null
+	,westCountrySalsa2staticLoad: function(done) {
+		kha_Assets.loadImage("westCountrySalsa2static",function(image) {
+			done();
+		});
+	}
+	,westCountrySalsa2staticUnload: function() {
+		this.westCountrySalsa2static.unload();
+		this.westCountrySalsa2static = null;
+	}
+	,westCountrySalsa2icon2: null
 	,westCountrySalsa2icon2Name: null
 	,westCountrySalsa2icon2Description: null
 	,westCountrySalsa2icon2Load: function(done) {
@@ -3776,65 +3791,65 @@ kha_Shaders.init = function() {
 	var _g1 = 0;
 	while(_g1 < 3) {
 		var i1 = _g1++;
-		var data1 = Reflect.field(kha_Shaders,"painter_colored_vertData" + i1);
+		var data1 = Reflect.field(kha_Shaders,"painter_image_fragData" + i1);
 		var bytes1 = haxe_Unserializer.run(data1);
 		blobs1.push(kha_internal_BytesBlob.fromBytes(bytes1));
 	}
-	kha_Shaders.painter_colored_vert = new kha_graphics4_VertexShader(blobs1,["painter-colored.vert.essl","painter-colored-relaxed.vert.essl","painter-colored-webgl2.vert.essl"]);
+	kha_Shaders.painter_image_frag = new kha_graphics4_FragmentShader(blobs1,["painter-image.frag.essl","painter-image-relaxed.frag.essl","painter-image-webgl2.frag.essl"]);
 	var blobs2 = [];
 	var _g2 = 0;
 	while(_g2 < 3) {
 		var i2 = _g2++;
-		var data2 = Reflect.field(kha_Shaders,"painter_image_fragData" + i2);
+		var data2 = Reflect.field(kha_Shaders,"painter_colored_vertData" + i2);
 		var bytes2 = haxe_Unserializer.run(data2);
 		blobs2.push(kha_internal_BytesBlob.fromBytes(bytes2));
 	}
-	kha_Shaders.painter_image_frag = new kha_graphics4_FragmentShader(blobs2,["painter-image.frag.essl","painter-image-relaxed.frag.essl","painter-image-webgl2.frag.essl"]);
+	kha_Shaders.painter_colored_vert = new kha_graphics4_VertexShader(blobs2,["painter-colored.vert.essl","painter-colored-relaxed.vert.essl","painter-colored-webgl2.vert.essl"]);
 	var blobs3 = [];
 	var _g3 = 0;
 	while(_g3 < 3) {
 		var i3 = _g3++;
-		var data3 = Reflect.field(kha_Shaders,"painter_image_vertData" + i3);
+		var data3 = Reflect.field(kha_Shaders,"painter_text_fragData" + i3);
 		var bytes3 = haxe_Unserializer.run(data3);
 		blobs3.push(kha_internal_BytesBlob.fromBytes(bytes3));
 	}
-	kha_Shaders.painter_image_vert = new kha_graphics4_VertexShader(blobs3,["painter-image.vert.essl","painter-image-relaxed.vert.essl","painter-image-webgl2.vert.essl"]);
+	kha_Shaders.painter_text_frag = new kha_graphics4_FragmentShader(blobs3,["painter-text.frag.essl","painter-text-relaxed.frag.essl","painter-text-webgl2.frag.essl"]);
 	var blobs4 = [];
 	var _g4 = 0;
 	while(_g4 < 3) {
 		var i4 = _g4++;
-		var data4 = Reflect.field(kha_Shaders,"painter_text_fragData" + i4);
+		var data4 = Reflect.field(kha_Shaders,"painter_image_vertData" + i4);
 		var bytes4 = haxe_Unserializer.run(data4);
 		blobs4.push(kha_internal_BytesBlob.fromBytes(bytes4));
 	}
-	kha_Shaders.painter_text_frag = new kha_graphics4_FragmentShader(blobs4,["painter-text.frag.essl","painter-text-relaxed.frag.essl","painter-text-webgl2.frag.essl"]);
+	kha_Shaders.painter_image_vert = new kha_graphics4_VertexShader(blobs4,["painter-image.vert.essl","painter-image-relaxed.vert.essl","painter-image-webgl2.vert.essl"]);
 	var blobs5 = [];
 	var _g5 = 0;
 	while(_g5 < 3) {
 		var i5 = _g5++;
-		var data5 = Reflect.field(kha_Shaders,"painter_video_fragData" + i5);
+		var data5 = Reflect.field(kha_Shaders,"painter_text_vertData" + i5);
 		var bytes5 = haxe_Unserializer.run(data5);
 		blobs5.push(kha_internal_BytesBlob.fromBytes(bytes5));
 	}
-	kha_Shaders.painter_video_frag = new kha_graphics4_FragmentShader(blobs5,["painter-video.frag.essl","painter-video-relaxed.frag.essl","painter-video-webgl2.frag.essl"]);
+	kha_Shaders.painter_text_vert = new kha_graphics4_VertexShader(blobs5,["painter-text.vert.essl","painter-text-relaxed.vert.essl","painter-text-webgl2.vert.essl"]);
 	var blobs6 = [];
 	var _g6 = 0;
 	while(_g6 < 3) {
 		var i6 = _g6++;
-		var data6 = Reflect.field(kha_Shaders,"painter_video_vertData" + i6);
+		var data6 = Reflect.field(kha_Shaders,"painter_video_fragData" + i6);
 		var bytes6 = haxe_Unserializer.run(data6);
 		blobs6.push(kha_internal_BytesBlob.fromBytes(bytes6));
 	}
-	kha_Shaders.painter_video_vert = new kha_graphics4_VertexShader(blobs6,["painter-video.vert.essl","painter-video-relaxed.vert.essl","painter-video-webgl2.vert.essl"]);
+	kha_Shaders.painter_video_frag = new kha_graphics4_FragmentShader(blobs6,["painter-video.frag.essl","painter-video-relaxed.frag.essl","painter-video-webgl2.frag.essl"]);
 	var blobs7 = [];
 	var _g7 = 0;
 	while(_g7 < 3) {
 		var i7 = _g7++;
-		var data7 = Reflect.field(kha_Shaders,"painter_text_vertData" + i7);
+		var data7 = Reflect.field(kha_Shaders,"painter_video_vertData" + i7);
 		var bytes7 = haxe_Unserializer.run(data7);
 		blobs7.push(kha_internal_BytesBlob.fromBytes(bytes7));
 	}
-	kha_Shaders.painter_text_vert = new kha_graphics4_VertexShader(blobs7,["painter-text.vert.essl","painter-text-relaxed.vert.essl","painter-text-webgl2.vert.essl"]);
+	kha_Shaders.painter_video_vert = new kha_graphics4_VertexShader(blobs7,["painter-video.vert.essl","painter-video-relaxed.vert.essl","painter-video-webgl2.vert.essl"]);
 };
 var kha_Sound = function() {
 };
@@ -23002,6 +23017,7 @@ $hxClasses["simpleText._SimpleText.AbstractFontStyle_Impl_"] = simpleText__$Simp
 simpleText__$SimpleText_AbstractFontStyle_$Impl_$.__name__ = ["simpleText","_SimpleText","AbstractFontStyle_Impl_"];
 simpleText__$SimpleText_AbstractFontStyle_$Impl_$._new = function(s) {
 	var this1 = s;
+	this1.dirty = true;
 	var s1 = this1;
 	var hi = s1.font.height(s1.size);
 	s1.charHi = hi;
@@ -23014,6 +23030,29 @@ simpleText__$SimpleText_AbstractFontStyle_$Impl_$.hi = function(this1) {
 	s.charHi = hi;
 	s.lineHeight = hi + s.dAdvanceY;
 	return hi;
+};
+simpleText__$SimpleText_AbstractFontStyle_$Impl_$.resize = function(this1,newSize) {
+	var s = this1;
+	var scale = newSize / s.size;
+	if(this1.size != newSize) {
+		s.size = newSize;
+		s.dAdvanceX *= scale;
+		s.dAdvanceY *= scale;
+		s.dirty = true;
+	}
+	return scale;
+};
+simpleText__$SimpleText_AbstractFontStyle_$Impl_$.originalSizeScale = function(this1,originalSize,scale) {
+	var newSize = scale * originalSize | 0;
+	var s = this1;
+	var scale1 = newSize / s.size;
+	if(this1.size != newSize) {
+		s.size = newSize;
+		s.dAdvanceX *= scale1;
+		s.dAdvanceY *= scale1;
+		s.dirty = true;
+	}
+	return scale1;
 };
 var simpleText__$SimpleText_AbstractLetter_$Impl_$ = {};
 $hxClasses["simpleText._SimpleText.AbstractLetter_Impl_"] = simpleText__$SimpleText_AbstractLetter_$Impl_$;
@@ -23130,6 +23169,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.calculateDimensions = function(this1)
 	var noSpaces = 0;
 	var wordLen = 0;
 	var dSpace = 0.;
+	haxe_Log.trace("pos " + pos + " len " + len,{ fileName : "SimpleText.hx", lineNumber : 252, className : "simpleText._SimpleText.SimpleText_Impl_", methodName : "calculateDimensions"});
 	while(pos < len) {
 		c = content.charCodeAt(pos++);
 		switch(c) {
@@ -23197,7 +23237,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.calculateDimensions = function(this1)
 			break;
 		default:
 			var noStop1 = true;
-			if(f.wrapWidth != null) {
+			if(f.wrapWidth != null && f.wrapWidth != 0) {
 				if(dW > f.wrapWidth) {
 					if(pos != len) {
 						dy += lineGap + hi;
@@ -23272,6 +23312,9 @@ simpleText__$SimpleText_SimpleText_$Impl_$.render = function(this1,g2,begin) {
 	}
 	var f = this1;
 	var s = f.fontStyle;
+	if(s.dirty) {
+		f.dirty = true;
+	}
 	var font = s.font;
 	var size = s.size;
 	var color = s.color;
@@ -23313,6 +23356,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.render = function(this1,g2,begin) {
 		var noSpaces = 0;
 		var wordLen = 0;
 		var dSpace = 0.;
+		haxe_Log.trace("pos " + pos + " len " + len,{ fileName : "SimpleText.hx", lineNumber : 252, className : "simpleText._SimpleText.SimpleText_Impl_", methodName : "calculateDimensions"});
 		while(pos < len) {
 			c = content.charCodeAt(pos++);
 			switch(c) {
@@ -23380,7 +23424,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.render = function(this1,g2,begin) {
 				break;
 			default:
 				var noStop1 = true;
-				if(f1.wrapWidth != null) {
+				if(f1.wrapWidth != null && f1.wrapWidth != 0) {
 					if(dW > f1.wrapWidth) {
 						if(pos != len) {
 							dy1 += lineGap1 + hi1;
@@ -23665,6 +23709,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.render = function(this1,g2,begin) {
 		g2.end();
 	}
 	f.dirty = false;
+	f.fontStyle.dirty = false;
 	return "";
 };
 simpleText__$SimpleText_SimpleText_$Impl_$.alignmentX = function(this1,dxdW,wid,lineWid,noSpaces) {
@@ -24781,6 +24826,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.toImage = function(this1) {
 		var noSpaces = 0;
 		var wordLen = 0;
 		var dSpace = 0.;
+		haxe_Log.trace("pos " + pos + " len " + len,{ fileName : "SimpleText.hx", lineNumber : 252, className : "simpleText._SimpleText.SimpleText_Impl_", methodName : "calculateDimensions"});
 		while(pos < len) {
 			c = content.charCodeAt(pos++);
 			switch(c) {
@@ -24848,7 +24894,7 @@ simpleText__$SimpleText_SimpleText_$Impl_$.toImage = function(this1) {
 				break;
 			default:
 				var noStop1 = true;
-				if(f.wrapWidth != null) {
+				if(f.wrapWidth != null && f.wrapWidth != 0) {
 					if(dW > f.wrapWidth) {
 						if(pos != len) {
 							dy += lineGap + hi;
@@ -24915,6 +24961,395 @@ simpleText__$SimpleText_SimpleText_$Impl_$.toImage = function(this1) {
 	}
 	simpleText__$SimpleText_SimpleText_$Impl_$.render(this1,img.get_g2(),true);
 	return img;
+};
+var simpleText_ScalableText = function(txt_) {
+	this.fontScale = 1.;
+	this.txt = txt_;
+	this.origSize = this.txt.fontStyle.size;
+	this.origWrapWidth = this.txt.wrapWidth;
+};
+$hxClasses["simpleText.ScalableText"] = simpleText_ScalableText;
+simpleText_ScalableText.__name__ = ["simpleText","ScalableText"];
+simpleText_ScalableText.prototype = {
+	txt: null
+	,fontScale: null
+	,origSize: null
+	,origWrapWidth: null
+	,get_scale: function() {
+		return this.fontScale;
+	}
+	,set_scale: function(val) {
+		this.fontScale = val;
+		var this1 = this.txt.fontStyle;
+		var newSize = this.fontScale * this.origSize | 0;
+		var s = this1;
+		var scale = newSize / s.size;
+		if(this1.size != newSize) {
+			s.size = newSize;
+			s.dAdvanceX *= scale;
+			s.dAdvanceY *= scale;
+			s.dirty = true;
+		}
+		if(this.txt.fontStyle.dirty) {
+			this.txt.wrapWidth = this.origWrapWidth * this.fontScale;
+		}
+		return this.fontScale;
+	}
+	,get_height: function() {
+		if(this.txt.height == null || this.txt.fontStyle.dirty) {
+			var f = this.txt;
+			var s = f.fontStyle;
+			var content = f.content;
+			var font = s.font;
+			var size = s.size;
+			var spacing = s.dAdvanceX;
+			var lineGap = s.dAdvanceY;
+			var hi = font.height(size);
+			s.charHi = hi;
+			s.lineHeight = hi + lineGap;
+			var len = content.length;
+			var pos = 0;
+			var maxW = 0.;
+			var dW = 0.;
+			var dy = 0.;
+			var c;
+			var letter = "";
+			var letterW = 0.;
+			var desend = false;
+			f.linesWidth = [];
+			f.spaces = [];
+			f.scrollBreaks = [];
+			var noSpaces = 0;
+			var wordLen = 0;
+			var dSpace = 0.;
+			haxe_Log.trace("pos " + pos + " len " + len,{ fileName : "SimpleText.hx", lineNumber : 252, className : "simpleText._SimpleText.SimpleText_Impl_", methodName : "calculateDimensions"});
+			while(pos < len) {
+				c = content.charCodeAt(pos++);
+				switch(c) {
+				case 10:case 13:
+					if(letter == " ") {
+						dW -= letterW + spacing;
+					}
+					if(pos != len) {
+						dy += lineGap + hi;
+					}
+					if(dW != 0.) {
+						dW -= spacing - 1;
+					}
+					if(dW > maxW) {
+						maxW = dW;
+					}
+					f.linesWidth.push(dW);
+					dW = 0.;
+					letterW = 0.;
+					if(pos != len - 1) {
+						desend = false;
+					}
+					f.spaces.push(noSpaces);
+					noSpaces = 0;
+					wordLen = 0;
+					dSpace = 0.;
+					break;
+				case 103:case 106:case 112:case 113:case 121:
+					var noStop = true;
+					if(f.wrapWidth != null) {
+						if(dW > f.wrapWidth) {
+							if(pos != len) {
+								dy += lineGap + hi;
+							}
+							maxW = f.wrapWidth;
+							f.linesWidth.push(dW - dSpace - spacing);
+							dSpace = 0.;
+							dW = 0.;
+							letterW = 0.;
+							if(pos != len - 1) {
+								desend = false;
+							}
+							if(noSpaces > 0) {
+								--noSpaces;
+							}
+							f.spaces.push(noSpaces);
+							noSpaces = 0;
+							pos -= wordLen - 1;
+							f.scrollBreaks.push(pos);
+							--pos;
+							dW += spacing / 2;
+							wordLen = 0;
+							noStop = false;
+						}
+					}
+					if(noStop) {
+						letter = String.fromCharCode(c);
+						letterW = font.width(size,letter);
+						dW += letterW;
+						dW += spacing;
+						dSpace += letterW + spacing;
+						desend = true;
+						++wordLen;
+					}
+					break;
+				default:
+					var noStop1 = true;
+					if(f.wrapWidth != null && f.wrapWidth != 0) {
+						if(dW > f.wrapWidth) {
+							if(pos != len) {
+								dy += lineGap + hi;
+							}
+							maxW = f.wrapWidth;
+							f.linesWidth.push(dW - dSpace - spacing);
+							dSpace = 0.;
+							dW = 0.;
+							letterW = 0.;
+							if(pos != len - 1) {
+								desend = false;
+							}
+							if(noSpaces > 0) {
+								--noSpaces;
+							}
+							f.spaces.push(noSpaces);
+							noSpaces = 0;
+							pos -= wordLen - 1;
+							f.scrollBreaks.push(pos);
+							--pos;
+							dW += spacing / 2;
+							wordLen = 0;
+							noStop1 = true;
+						}
+					}
+					if(noStop1) {
+						letter = String.fromCharCode(c);
+						if(letter == " ") {
+							dSpace = 0.;
+							wordLen = 0;
+							++noSpaces;
+						} else {
+							++wordLen;
+						}
+						letterW = font.width(size,letter);
+						dW += letterW;
+						dW += spacing;
+						dSpace += letterW + spacing;
+					}
+				}
+			}
+			if(letter == " ") {
+				--noSpaces;
+			}
+			f.spaces.push(noSpaces);
+			dy += hi;
+			if(desend) {
+				dy += hi / 6;
+			}
+			if(dW != 0.) {
+				dW -= spacing - 1;
+			}
+			if(dW > maxW) {
+				maxW = dW;
+			}
+			f.linesWidth.push(dW);
+			f.width = maxW;
+			f.height = dy;
+		}
+		return this.txt.height;
+	}
+	,get_width: function() {
+		if(this.txt.width == null || this.txt.fontStyle.dirty) {
+			var f = this.txt;
+			var s = f.fontStyle;
+			var content = f.content;
+			var font = s.font;
+			var size = s.size;
+			var spacing = s.dAdvanceX;
+			var lineGap = s.dAdvanceY;
+			var hi = font.height(size);
+			s.charHi = hi;
+			s.lineHeight = hi + lineGap;
+			var len = content.length;
+			var pos = 0;
+			var maxW = 0.;
+			var dW = 0.;
+			var dy = 0.;
+			var c;
+			var letter = "";
+			var letterW = 0.;
+			var desend = false;
+			f.linesWidth = [];
+			f.spaces = [];
+			f.scrollBreaks = [];
+			var noSpaces = 0;
+			var wordLen = 0;
+			var dSpace = 0.;
+			haxe_Log.trace("pos " + pos + " len " + len,{ fileName : "SimpleText.hx", lineNumber : 252, className : "simpleText._SimpleText.SimpleText_Impl_", methodName : "calculateDimensions"});
+			while(pos < len) {
+				c = content.charCodeAt(pos++);
+				switch(c) {
+				case 10:case 13:
+					if(letter == " ") {
+						dW -= letterW + spacing;
+					}
+					if(pos != len) {
+						dy += lineGap + hi;
+					}
+					if(dW != 0.) {
+						dW -= spacing - 1;
+					}
+					if(dW > maxW) {
+						maxW = dW;
+					}
+					f.linesWidth.push(dW);
+					dW = 0.;
+					letterW = 0.;
+					if(pos != len - 1) {
+						desend = false;
+					}
+					f.spaces.push(noSpaces);
+					noSpaces = 0;
+					wordLen = 0;
+					dSpace = 0.;
+					break;
+				case 103:case 106:case 112:case 113:case 121:
+					var noStop = true;
+					if(f.wrapWidth != null) {
+						if(dW > f.wrapWidth) {
+							if(pos != len) {
+								dy += lineGap + hi;
+							}
+							maxW = f.wrapWidth;
+							f.linesWidth.push(dW - dSpace - spacing);
+							dSpace = 0.;
+							dW = 0.;
+							letterW = 0.;
+							if(pos != len - 1) {
+								desend = false;
+							}
+							if(noSpaces > 0) {
+								--noSpaces;
+							}
+							f.spaces.push(noSpaces);
+							noSpaces = 0;
+							pos -= wordLen - 1;
+							f.scrollBreaks.push(pos);
+							--pos;
+							dW += spacing / 2;
+							wordLen = 0;
+							noStop = false;
+						}
+					}
+					if(noStop) {
+						letter = String.fromCharCode(c);
+						letterW = font.width(size,letter);
+						dW += letterW;
+						dW += spacing;
+						dSpace += letterW + spacing;
+						desend = true;
+						++wordLen;
+					}
+					break;
+				default:
+					var noStop1 = true;
+					if(f.wrapWidth != null && f.wrapWidth != 0) {
+						if(dW > f.wrapWidth) {
+							if(pos != len) {
+								dy += lineGap + hi;
+							}
+							maxW = f.wrapWidth;
+							f.linesWidth.push(dW - dSpace - spacing);
+							dSpace = 0.;
+							dW = 0.;
+							letterW = 0.;
+							if(pos != len - 1) {
+								desend = false;
+							}
+							if(noSpaces > 0) {
+								--noSpaces;
+							}
+							f.spaces.push(noSpaces);
+							noSpaces = 0;
+							pos -= wordLen - 1;
+							f.scrollBreaks.push(pos);
+							--pos;
+							dW += spacing / 2;
+							wordLen = 0;
+							noStop1 = true;
+						}
+					}
+					if(noStop1) {
+						letter = String.fromCharCode(c);
+						if(letter == " ") {
+							dSpace = 0.;
+							wordLen = 0;
+							++noSpaces;
+						} else {
+							++wordLen;
+						}
+						letterW = font.width(size,letter);
+						dW += letterW;
+						dW += spacing;
+						dSpace += letterW + spacing;
+					}
+				}
+			}
+			if(letter == " ") {
+				--noSpaces;
+			}
+			f.spaces.push(noSpaces);
+			dy += hi;
+			if(desend) {
+				dy += hi / 6;
+			}
+			if(dW != 0.) {
+				dW -= spacing - 1;
+			}
+			if(dW > maxW) {
+				maxW = dW;
+			}
+			f.linesWidth.push(dW);
+			f.width = maxW;
+			f.height = dy;
+		}
+		return this.txt.width;
+	}
+	,getScaleForWidth: function(val) {
+		return val / this.get_width();
+	}
+	,getScaleForHeight: function(val) {
+		return val / this.get_height();
+	}
+	,__class__: simpleText_ScalableText
+	,__properties__: {get_width:"get_width",get_height:"get_height",set_scale:"set_scale",get_scale:"get_scale"}
+};
+var simpleText_ScalableImage = function(img_) {
+	this.alpha = 1;
+	this.y = 0;
+	this.x = 0;
+	this.scale = 1;
+	this.img = img_;
+};
+$hxClasses["simpleText.ScalableImage"] = simpleText_ScalableImage;
+simpleText_ScalableImage.__name__ = ["simpleText","ScalableImage"];
+simpleText_ScalableImage.prototype = {
+	scale: null
+	,x: null
+	,y: null
+	,alpha: null
+	,img: null
+	,get_height: function() {
+		return this.img.get_height() * this.scale;
+	}
+	,get_width: function() {
+		return this.img.get_width() * this.scale;
+	}
+	,render: function(g2) {
+		if(this.alpha == 0) {
+			return;
+		}
+		g2.set_opacity(this.alpha);
+		g2.set_color(-1);
+		g2.drawScaledImage(this.img,this.x,this.y,this.img.get_width() * this.scale,this.img.get_height() * this.scale);
+		g2.set_opacity(1.);
+	}
+	,__class__: simpleText_ScalableImage
+	,__properties__: {get_width:"get_width",get_height:"get_height"}
 };
 var tweenx909_EventX = function() { };
 $hxClasses["tweenx909.EventX"] = tweenx909_EventX;
@@ -29542,7 +29977,7 @@ tweenxcore_structure_TimelineSearchResult.prototype = {
 var westCountrySalsa_Contact = function() {
 	this.content = "westcountrysalsa@gmail.com";
 	var this1 = { begin : 0, end : this.content.length};
-	var fontStyle = { font : kha_Assets.fonts.Arimo_Bold, size : westCountrySalsa_Contact.size, color : westCountrySalsa_Contact.fontColor, alpha : 1., range : this1, dAdvanceX : 5., dAdvanceY : -4., hAlign : simpleText_HAlign.RIGHT};
+	var fontStyle = { font : kha_Assets.fonts.Arimo_Bold, size : westCountrySalsa_Contact.size, color : westCountrySalsa_Contact.fontColor, alpha : 1., range : this1, dAdvanceX : 5., dAdvanceY : -4., hAlign : simpleText_HAlign.CENTRE};
 	var this2 = { x : 0., y : 0., fontStyle : fontStyle, content : this.content, wrapWidth : 520, highLightColor : -1, highLightAlpha : 0.9, bgHighLightColor : -16777216, bgHighLightAlpha : 1., highLight : true};
 	this2.dirty = true;
 	this2._tweenParam = 1.;
@@ -29556,9 +29991,9 @@ westCountrySalsa_Contact.prototype = {
 	,__class__: westCountrySalsa_Contact
 };
 var westCountrySalsa_LatinoSundays = function() {
-	this.content = "LATINO SUNDAYS\n@ The Bell Inn, Bath\n\n\nfrom 11th February\n\n£5 entry\n7.30pm Salsa lesson\nwith Justin & Roxana\n\n8pm Salsa & Forro social";
+	this.content = "LATINO SUNDAYS\n@ The Bell Inn, Bath\n\nfrom 11th February\n\n£5 entry\n7.30pm Salsa lesson\nwith Justin & Roxana\n\n8pm Salsa & Forro social";
 	var this1 = { begin : 0, end : this.content.length};
-	var fontStyle = { font : kha_Assets.fonts.Arimo_Bold, size : westCountrySalsa_LatinoSundays.size, color : westCountrySalsa_LatinoSundays.fontColor, alpha : 1., range : this1, dAdvanceX : 5., dAdvanceY : -4., hAlign : simpleText_HAlign.RIGHT};
+	var fontStyle = { font : kha_Assets.fonts.Arimo_Bold, size : westCountrySalsa_LatinoSundays.size, color : westCountrySalsa_LatinoSundays.fontColor, alpha : 1., range : this1, dAdvanceX : 5., dAdvanceY : 0., hAlign : simpleText_HAlign.RIGHT};
 	var this2 = { x : 0., y : 0., fontStyle : fontStyle, content : this.content, wrapWidth : 520, highLightColor : -1, highLightAlpha : 0.9, bgHighLightColor : -16777216, bgHighLightAlpha : 1., highLight : true};
 	this2.dirty = true;
 	this2._tweenParam = 1.;
@@ -29702,19 +30137,22 @@ var westCountrySalsa_WestCountrySalsa2 = function() {
 	this.localWid = 0;
 	this.accurate = simpleText_Hit.WITHIN;
 	this.selection = simpleText_Selection.LINE;
-	this.isLeft = false;
-	this.scale = 1.;
 	this.allTxt = [];
 	kha_Assets.loadEverything($bind(this,this.loadAll));
 };
 $hxClasses["westCountrySalsa.WestCountrySalsa2"] = westCountrySalsa_WestCountrySalsa2;
 westCountrySalsa_WestCountrySalsa2.__name__ = ["westCountrySalsa","WestCountrySalsa2"];
 westCountrySalsa_WestCountrySalsa2.prototype = {
-	sundayTxt: null
+	img: null
+	,scalableImage: null
+	,sundayTxt: null
 	,thursdayTxt: null
 	,salsaClassesTxt: null
 	,titleTxt: null
 	,contactTxt: null
+	,sundayScalable: null
+	,thursdayScalable: null
+	,contactScalable: null
 	,allTxt: null
 	,loadAll: function() {
 		this.setup();
@@ -29728,1159 +30166,32 @@ westCountrySalsa_WestCountrySalsa2.prototype = {
 		mouseAndKey.change = $bind(this,this.checkTextHit);
 		this.dirty();
 	}
-	,dh: null
-	,imgX: null
-	,imgY: null
-	,img: null
-	,scale: null
-	,isLeft: null
 	,layout: function() {
 		var mainHi = Main.hi;
 		var mainWid = Main.wid;
-		this.sundayTxt.fontStyle.hAlign = simpleText_HAlign.RIGHT;
-		this.sundayTxt.fontStyle.size = 20;
-		this.thursdayTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-		this.thursdayTxt.fontStyle.size = 20;
-		this.contactTxt.fontStyle.size = 18;
-		this.salsaClassesTxt.fontStyle.size = 20;
-		var f = this.sundayTxt;
-		var s = f.fontStyle;
-		var content = f.content;
-		var font = s.font;
-		var size = s.size;
-		var spacing = s.dAdvanceX;
-		var lineGap = s.dAdvanceY;
-		var hi = font.height(size);
-		s.charHi = hi;
-		s.lineHeight = hi + lineGap;
-		var len = content.length;
-		var pos = 0;
-		var maxW = 0.;
-		var dW = 0.;
-		var dy = 0.;
-		var c;
-		var letter = "";
-		var letterW = 0.;
-		var desend = false;
-		f.linesWidth = [];
-		f.spaces = [];
-		f.scrollBreaks = [];
-		var noSpaces = 0;
-		var wordLen = 0;
-		var dSpace = 0.;
-		while(pos < len) {
-			c = content.charCodeAt(pos++);
-			switch(c) {
-			case 10:case 13:
-				if(letter == " ") {
-					dW -= letterW + spacing;
-				}
-				if(pos != len) {
-					dy += lineGap + hi;
-				}
-				if(dW != 0.) {
-					dW -= spacing - 1;
-				}
-				if(dW > maxW) {
-					maxW = dW;
-				}
-				f.linesWidth.push(dW);
-				dW = 0.;
-				letterW = 0.;
-				if(pos != len - 1) {
-					desend = false;
-				}
-				f.spaces.push(noSpaces);
-				noSpaces = 0;
-				wordLen = 0;
-				dSpace = 0.;
-				break;
-			case 103:case 106:case 112:case 113:case 121:
-				var noStop = true;
-				if(f.wrapWidth != null) {
-					if(dW > f.wrapWidth) {
-						if(pos != len) {
-							dy += lineGap + hi;
-						}
-						maxW = f.wrapWidth;
-						f.linesWidth.push(dW - dSpace - spacing);
-						dSpace = 0.;
-						dW = 0.;
-						letterW = 0.;
-						if(pos != len - 1) {
-							desend = false;
-						}
-						if(noSpaces > 0) {
-							--noSpaces;
-						}
-						f.spaces.push(noSpaces);
-						noSpaces = 0;
-						pos -= wordLen - 1;
-						f.scrollBreaks.push(pos);
-						--pos;
-						dW += spacing / 2;
-						wordLen = 0;
-						noStop = false;
-					}
-				}
-				if(noStop) {
-					letter = String.fromCharCode(c);
-					letterW = font.width(size,letter);
-					dW += letterW;
-					dW += spacing;
-					dSpace += letterW + spacing;
-					desend = true;
-					++wordLen;
-				}
-				break;
-			default:
-				var noStop1 = true;
-				if(f.wrapWidth != null) {
-					if(dW > f.wrapWidth) {
-						if(pos != len) {
-							dy += lineGap + hi;
-						}
-						maxW = f.wrapWidth;
-						f.linesWidth.push(dW - dSpace - spacing);
-						dSpace = 0.;
-						dW = 0.;
-						letterW = 0.;
-						if(pos != len - 1) {
-							desend = false;
-						}
-						if(noSpaces > 0) {
-							--noSpaces;
-						}
-						f.spaces.push(noSpaces);
-						noSpaces = 0;
-						pos -= wordLen - 1;
-						f.scrollBreaks.push(pos);
-						--pos;
-						dW += spacing / 2;
-						wordLen = 0;
-						noStop1 = true;
-					}
-				}
-				if(noStop1) {
-					letter = String.fromCharCode(c);
-					if(letter == " ") {
-						dSpace = 0.;
-						wordLen = 0;
-						++noSpaces;
-					} else {
-						++wordLen;
-					}
-					letterW = font.width(size,letter);
-					dW += letterW;
-					dW += spacing;
-					dSpace += letterW + spacing;
-				}
-			}
-		}
-		if(letter == " ") {
-			--noSpaces;
-		}
-		f.spaces.push(noSpaces);
-		dy += hi;
-		if(desend) {
-			dy += hi / 6;
-		}
-		if(dW != 0.) {
-			dW -= spacing - 1;
-		}
-		if(dW > maxW) {
-			maxW = dW;
-		}
-		f.linesWidth.push(dW);
-		f.width = maxW;
-		f.height = dy;
-		var f1 = this.thursdayTxt;
-		var s1 = f1.fontStyle;
-		var content1 = f1.content;
-		var font1 = s1.font;
-		var size1 = s1.size;
-		var spacing1 = s1.dAdvanceX;
-		var lineGap1 = s1.dAdvanceY;
-		var hi1 = font1.height(size1);
-		s1.charHi = hi1;
-		s1.lineHeight = hi1 + lineGap1;
-		var len1 = content1.length;
-		var pos1 = 0;
-		var maxW1 = 0.;
-		var dW1 = 0.;
-		var dy1 = 0.;
-		var c1;
-		var letter1 = "";
-		var letterW1 = 0.;
-		var desend1 = false;
-		f1.linesWidth = [];
-		f1.spaces = [];
-		f1.scrollBreaks = [];
-		var noSpaces1 = 0;
-		var wordLen1 = 0;
-		var dSpace1 = 0.;
-		while(pos1 < len1) {
-			c1 = content1.charCodeAt(pos1++);
-			switch(c1) {
-			case 10:case 13:
-				if(letter1 == " ") {
-					dW1 -= letterW1 + spacing1;
-				}
-				if(pos1 != len1) {
-					dy1 += lineGap1 + hi1;
-				}
-				if(dW1 != 0.) {
-					dW1 -= spacing1 - 1;
-				}
-				if(dW1 > maxW1) {
-					maxW1 = dW1;
-				}
-				f1.linesWidth.push(dW1);
-				dW1 = 0.;
-				letterW1 = 0.;
-				if(pos1 != len1 - 1) {
-					desend1 = false;
-				}
-				f1.spaces.push(noSpaces1);
-				noSpaces1 = 0;
-				wordLen1 = 0;
-				dSpace1 = 0.;
-				break;
-			case 103:case 106:case 112:case 113:case 121:
-				var noStop2 = true;
-				if(f1.wrapWidth != null) {
-					if(dW1 > f1.wrapWidth) {
-						if(pos1 != len1) {
-							dy1 += lineGap1 + hi1;
-						}
-						maxW1 = f1.wrapWidth;
-						f1.linesWidth.push(dW1 - dSpace1 - spacing1);
-						dSpace1 = 0.;
-						dW1 = 0.;
-						letterW1 = 0.;
-						if(pos1 != len1 - 1) {
-							desend1 = false;
-						}
-						if(noSpaces1 > 0) {
-							--noSpaces1;
-						}
-						f1.spaces.push(noSpaces1);
-						noSpaces1 = 0;
-						pos1 -= wordLen1 - 1;
-						f1.scrollBreaks.push(pos1);
-						--pos1;
-						dW1 += spacing1 / 2;
-						wordLen1 = 0;
-						noStop2 = false;
-					}
-				}
-				if(noStop2) {
-					letter1 = String.fromCharCode(c1);
-					letterW1 = font1.width(size1,letter1);
-					dW1 += letterW1;
-					dW1 += spacing1;
-					dSpace1 += letterW1 + spacing1;
-					desend1 = true;
-					++wordLen1;
-				}
-				break;
-			default:
-				var noStop3 = true;
-				if(f1.wrapWidth != null) {
-					if(dW1 > f1.wrapWidth) {
-						if(pos1 != len1) {
-							dy1 += lineGap1 + hi1;
-						}
-						maxW1 = f1.wrapWidth;
-						f1.linesWidth.push(dW1 - dSpace1 - spacing1);
-						dSpace1 = 0.;
-						dW1 = 0.;
-						letterW1 = 0.;
-						if(pos1 != len1 - 1) {
-							desend1 = false;
-						}
-						if(noSpaces1 > 0) {
-							--noSpaces1;
-						}
-						f1.spaces.push(noSpaces1);
-						noSpaces1 = 0;
-						pos1 -= wordLen1 - 1;
-						f1.scrollBreaks.push(pos1);
-						--pos1;
-						dW1 += spacing1 / 2;
-						wordLen1 = 0;
-						noStop3 = true;
-					}
-				}
-				if(noStop3) {
-					letter1 = String.fromCharCode(c1);
-					if(letter1 == " ") {
-						dSpace1 = 0.;
-						wordLen1 = 0;
-						++noSpaces1;
-					} else {
-						++wordLen1;
-					}
-					letterW1 = font1.width(size1,letter1);
-					dW1 += letterW1;
-					dW1 += spacing1;
-					dSpace1 += letterW1 + spacing1;
-				}
-			}
-		}
-		if(letter1 == " ") {
-			--noSpaces1;
-		}
-		f1.spaces.push(noSpaces1);
-		dy1 += hi1;
-		if(desend1) {
-			dy1 += hi1 / 6;
-		}
-		if(dW1 != 0.) {
-			dW1 -= spacing1 - 1;
-		}
-		if(dW1 > maxW1) {
-			maxW1 = dW1;
-		}
-		f1.linesWidth.push(dW1);
-		f1.width = maxW1;
-		f1.height = dy1;
-		var f2 = this.salsaClassesTxt;
-		var s2 = f2.fontStyle;
-		var content2 = f2.content;
-		var font2 = s2.font;
-		var size2 = s2.size;
-		var spacing2 = s2.dAdvanceX;
-		var lineGap2 = s2.dAdvanceY;
-		var hi2 = font2.height(size2);
-		s2.charHi = hi2;
-		s2.lineHeight = hi2 + lineGap2;
-		var len2 = content2.length;
-		var pos2 = 0;
-		var maxW2 = 0.;
-		var dW2 = 0.;
-		var dy2 = 0.;
-		var c2;
-		var letter2 = "";
-		var letterW2 = 0.;
-		var desend2 = false;
-		f2.linesWidth = [];
-		f2.spaces = [];
-		f2.scrollBreaks = [];
-		var noSpaces2 = 0;
-		var wordLen2 = 0;
-		var dSpace2 = 0.;
-		while(pos2 < len2) {
-			c2 = content2.charCodeAt(pos2++);
-			switch(c2) {
-			case 10:case 13:
-				if(letter2 == " ") {
-					dW2 -= letterW2 + spacing2;
-				}
-				if(pos2 != len2) {
-					dy2 += lineGap2 + hi2;
-				}
-				if(dW2 != 0.) {
-					dW2 -= spacing2 - 1;
-				}
-				if(dW2 > maxW2) {
-					maxW2 = dW2;
-				}
-				f2.linesWidth.push(dW2);
-				dW2 = 0.;
-				letterW2 = 0.;
-				if(pos2 != len2 - 1) {
-					desend2 = false;
-				}
-				f2.spaces.push(noSpaces2);
-				noSpaces2 = 0;
-				wordLen2 = 0;
-				dSpace2 = 0.;
-				break;
-			case 103:case 106:case 112:case 113:case 121:
-				var noStop4 = true;
-				if(f2.wrapWidth != null) {
-					if(dW2 > f2.wrapWidth) {
-						if(pos2 != len2) {
-							dy2 += lineGap2 + hi2;
-						}
-						maxW2 = f2.wrapWidth;
-						f2.linesWidth.push(dW2 - dSpace2 - spacing2);
-						dSpace2 = 0.;
-						dW2 = 0.;
-						letterW2 = 0.;
-						if(pos2 != len2 - 1) {
-							desend2 = false;
-						}
-						if(noSpaces2 > 0) {
-							--noSpaces2;
-						}
-						f2.spaces.push(noSpaces2);
-						noSpaces2 = 0;
-						pos2 -= wordLen2 - 1;
-						f2.scrollBreaks.push(pos2);
-						--pos2;
-						dW2 += spacing2 / 2;
-						wordLen2 = 0;
-						noStop4 = false;
-					}
-				}
-				if(noStop4) {
-					letter2 = String.fromCharCode(c2);
-					letterW2 = font2.width(size2,letter2);
-					dW2 += letterW2;
-					dW2 += spacing2;
-					dSpace2 += letterW2 + spacing2;
-					desend2 = true;
-					++wordLen2;
-				}
-				break;
-			default:
-				var noStop5 = true;
-				if(f2.wrapWidth != null) {
-					if(dW2 > f2.wrapWidth) {
-						if(pos2 != len2) {
-							dy2 += lineGap2 + hi2;
-						}
-						maxW2 = f2.wrapWidth;
-						f2.linesWidth.push(dW2 - dSpace2 - spacing2);
-						dSpace2 = 0.;
-						dW2 = 0.;
-						letterW2 = 0.;
-						if(pos2 != len2 - 1) {
-							desend2 = false;
-						}
-						if(noSpaces2 > 0) {
-							--noSpaces2;
-						}
-						f2.spaces.push(noSpaces2);
-						noSpaces2 = 0;
-						pos2 -= wordLen2 - 1;
-						f2.scrollBreaks.push(pos2);
-						--pos2;
-						dW2 += spacing2 / 2;
-						wordLen2 = 0;
-						noStop5 = true;
-					}
-				}
-				if(noStop5) {
-					letter2 = String.fromCharCode(c2);
-					if(letter2 == " ") {
-						dSpace2 = 0.;
-						wordLen2 = 0;
-						++noSpaces2;
-					} else {
-						++wordLen2;
-					}
-					letterW2 = font2.width(size2,letter2);
-					dW2 += letterW2;
-					dW2 += spacing2;
-					dSpace2 += letterW2 + spacing2;
-				}
-			}
-		}
-		if(letter2 == " ") {
-			--noSpaces2;
-		}
-		f2.spaces.push(noSpaces2);
-		dy2 += hi2;
-		if(desend2) {
-			dy2 += hi2 / 6;
-		}
-		if(dW2 != 0.) {
-			dW2 -= spacing2 - 1;
-		}
-		if(dW2 > maxW2) {
-			maxW2 = dW2;
-		}
-		f2.linesWidth.push(dW2);
-		f2.width = maxW2;
-		f2.height = dy2;
-		var f3 = this.contactTxt;
-		var s3 = f3.fontStyle;
-		var content3 = f3.content;
-		var font3 = s3.font;
-		var size3 = s3.size;
-		var spacing3 = s3.dAdvanceX;
-		var lineGap3 = s3.dAdvanceY;
-		var hi3 = font3.height(size3);
-		s3.charHi = hi3;
-		s3.lineHeight = hi3 + lineGap3;
-		var len3 = content3.length;
-		var pos3 = 0;
-		var maxW3 = 0.;
-		var dW3 = 0.;
-		var dy3 = 0.;
-		var c3;
-		var letter3 = "";
-		var letterW3 = 0.;
-		var desend3 = false;
-		f3.linesWidth = [];
-		f3.spaces = [];
-		f3.scrollBreaks = [];
-		var noSpaces3 = 0;
-		var wordLen3 = 0;
-		var dSpace3 = 0.;
-		while(pos3 < len3) {
-			c3 = content3.charCodeAt(pos3++);
-			switch(c3) {
-			case 10:case 13:
-				if(letter3 == " ") {
-					dW3 -= letterW3 + spacing3;
-				}
-				if(pos3 != len3) {
-					dy3 += lineGap3 + hi3;
-				}
-				if(dW3 != 0.) {
-					dW3 -= spacing3 - 1;
-				}
-				if(dW3 > maxW3) {
-					maxW3 = dW3;
-				}
-				f3.linesWidth.push(dW3);
-				dW3 = 0.;
-				letterW3 = 0.;
-				if(pos3 != len3 - 1) {
-					desend3 = false;
-				}
-				f3.spaces.push(noSpaces3);
-				noSpaces3 = 0;
-				wordLen3 = 0;
-				dSpace3 = 0.;
-				break;
-			case 103:case 106:case 112:case 113:case 121:
-				var noStop6 = true;
-				if(f3.wrapWidth != null) {
-					if(dW3 > f3.wrapWidth) {
-						if(pos3 != len3) {
-							dy3 += lineGap3 + hi3;
-						}
-						maxW3 = f3.wrapWidth;
-						f3.linesWidth.push(dW3 - dSpace3 - spacing3);
-						dSpace3 = 0.;
-						dW3 = 0.;
-						letterW3 = 0.;
-						if(pos3 != len3 - 1) {
-							desend3 = false;
-						}
-						if(noSpaces3 > 0) {
-							--noSpaces3;
-						}
-						f3.spaces.push(noSpaces3);
-						noSpaces3 = 0;
-						pos3 -= wordLen3 - 1;
-						f3.scrollBreaks.push(pos3);
-						--pos3;
-						dW3 += spacing3 / 2;
-						wordLen3 = 0;
-						noStop6 = false;
-					}
-				}
-				if(noStop6) {
-					letter3 = String.fromCharCode(c3);
-					letterW3 = font3.width(size3,letter3);
-					dW3 += letterW3;
-					dW3 += spacing3;
-					dSpace3 += letterW3 + spacing3;
-					desend3 = true;
-					++wordLen3;
-				}
-				break;
-			default:
-				var noStop7 = true;
-				if(f3.wrapWidth != null) {
-					if(dW3 > f3.wrapWidth) {
-						if(pos3 != len3) {
-							dy3 += lineGap3 + hi3;
-						}
-						maxW3 = f3.wrapWidth;
-						f3.linesWidth.push(dW3 - dSpace3 - spacing3);
-						dSpace3 = 0.;
-						dW3 = 0.;
-						letterW3 = 0.;
-						if(pos3 != len3 - 1) {
-							desend3 = false;
-						}
-						if(noSpaces3 > 0) {
-							--noSpaces3;
-						}
-						f3.spaces.push(noSpaces3);
-						noSpaces3 = 0;
-						pos3 -= wordLen3 - 1;
-						f3.scrollBreaks.push(pos3);
-						--pos3;
-						dW3 += spacing3 / 2;
-						wordLen3 = 0;
-						noStop7 = true;
-					}
-				}
-				if(noStop7) {
-					letter3 = String.fromCharCode(c3);
-					if(letter3 == " ") {
-						dSpace3 = 0.;
-						wordLen3 = 0;
-						++noSpaces3;
-					} else {
-						++wordLen3;
-					}
-					letterW3 = font3.width(size3,letter3);
-					dW3 += letterW3;
-					dW3 += spacing3;
-					dSpace3 += letterW3 + spacing3;
-				}
-			}
-		}
-		if(letter3 == " ") {
-			--noSpaces3;
-		}
-		f3.spaces.push(noSpaces3);
-		dy3 += hi3;
-		if(desend3) {
-			dy3 += hi3 / 6;
-		}
-		if(dW3 != 0.) {
-			dW3 -= spacing3 - 1;
-		}
-		if(dW3 > maxW3) {
-			maxW3 = dW3;
-		}
-		f3.linesWidth.push(dW3);
-		f3.width = maxW3;
-		f3.height = dy3;
-		var dw = (mainWid - this.thursdayTxt.width - this.sundayTxt.width) / 3;
-		if(dw > 20) {
-			dw /= 4;
-		}
-		if(dw < 10 || mainHi < this.thursdayTxt.height + 30) {
-			this.sundayTxt.fontStyle.size = 15;
-			this.thursdayTxt.fontStyle.size = 15;
-			var f4 = this.sundayTxt;
-			var s4 = f4.fontStyle;
-			var content4 = f4.content;
-			var font4 = s4.font;
-			var size4 = s4.size;
-			var spacing4 = s4.dAdvanceX;
-			var lineGap4 = s4.dAdvanceY;
-			var hi4 = font4.height(size4);
-			s4.charHi = hi4;
-			s4.lineHeight = hi4 + lineGap4;
-			var len4 = content4.length;
-			var pos4 = 0;
-			var maxW4 = 0.;
-			var dW4 = 0.;
-			var dy4 = 0.;
-			var c4;
-			var letter4 = "";
-			var letterW4 = 0.;
-			var desend4 = false;
-			f4.linesWidth = [];
-			f4.spaces = [];
-			f4.scrollBreaks = [];
-			var noSpaces4 = 0;
-			var wordLen4 = 0;
-			var dSpace4 = 0.;
-			while(pos4 < len4) {
-				c4 = content4.charCodeAt(pos4++);
-				switch(c4) {
-				case 10:case 13:
-					if(letter4 == " ") {
-						dW4 -= letterW4 + spacing4;
-					}
-					if(pos4 != len4) {
-						dy4 += lineGap4 + hi4;
-					}
-					if(dW4 != 0.) {
-						dW4 -= spacing4 - 1;
-					}
-					if(dW4 > maxW4) {
-						maxW4 = dW4;
-					}
-					f4.linesWidth.push(dW4);
-					dW4 = 0.;
-					letterW4 = 0.;
-					if(pos4 != len4 - 1) {
-						desend4 = false;
-					}
-					f4.spaces.push(noSpaces4);
-					noSpaces4 = 0;
-					wordLen4 = 0;
-					dSpace4 = 0.;
-					break;
-				case 103:case 106:case 112:case 113:case 121:
-					var noStop8 = true;
-					if(f4.wrapWidth != null) {
-						if(dW4 > f4.wrapWidth) {
-							if(pos4 != len4) {
-								dy4 += lineGap4 + hi4;
-							}
-							maxW4 = f4.wrapWidth;
-							f4.linesWidth.push(dW4 - dSpace4 - spacing4);
-							dSpace4 = 0.;
-							dW4 = 0.;
-							letterW4 = 0.;
-							if(pos4 != len4 - 1) {
-								desend4 = false;
-							}
-							if(noSpaces4 > 0) {
-								--noSpaces4;
-							}
-							f4.spaces.push(noSpaces4);
-							noSpaces4 = 0;
-							pos4 -= wordLen4 - 1;
-							f4.scrollBreaks.push(pos4);
-							--pos4;
-							dW4 += spacing4 / 2;
-							wordLen4 = 0;
-							noStop8 = false;
-						}
-					}
-					if(noStop8) {
-						letter4 = String.fromCharCode(c4);
-						letterW4 = font4.width(size4,letter4);
-						dW4 += letterW4;
-						dW4 += spacing4;
-						dSpace4 += letterW4 + spacing4;
-						desend4 = true;
-						++wordLen4;
-					}
-					break;
-				default:
-					var noStop9 = true;
-					if(f4.wrapWidth != null) {
-						if(dW4 > f4.wrapWidth) {
-							if(pos4 != len4) {
-								dy4 += lineGap4 + hi4;
-							}
-							maxW4 = f4.wrapWidth;
-							f4.linesWidth.push(dW4 - dSpace4 - spacing4);
-							dSpace4 = 0.;
-							dW4 = 0.;
-							letterW4 = 0.;
-							if(pos4 != len4 - 1) {
-								desend4 = false;
-							}
-							if(noSpaces4 > 0) {
-								--noSpaces4;
-							}
-							f4.spaces.push(noSpaces4);
-							noSpaces4 = 0;
-							pos4 -= wordLen4 - 1;
-							f4.scrollBreaks.push(pos4);
-							--pos4;
-							dW4 += spacing4 / 2;
-							wordLen4 = 0;
-							noStop9 = true;
-						}
-					}
-					if(noStop9) {
-						letter4 = String.fromCharCode(c4);
-						if(letter4 == " ") {
-							dSpace4 = 0.;
-							wordLen4 = 0;
-							++noSpaces4;
-						} else {
-							++wordLen4;
-						}
-						letterW4 = font4.width(size4,letter4);
-						dW4 += letterW4;
-						dW4 += spacing4;
-						dSpace4 += letterW4 + spacing4;
-					}
-				}
-			}
-			if(letter4 == " ") {
-				--noSpaces4;
-			}
-			f4.spaces.push(noSpaces4);
-			dy4 += hi4;
-			if(desend4) {
-				dy4 += hi4 / 6;
-			}
-			if(dW4 != 0.) {
-				dW4 -= spacing4 - 1;
-			}
-			if(dW4 > maxW4) {
-				maxW4 = dW4;
-			}
-			f4.linesWidth.push(dW4);
-			f4.width = maxW4;
-			f4.height = dy4;
-			var f5 = this.thursdayTxt;
-			var s5 = f5.fontStyle;
-			var content5 = f5.content;
-			var font5 = s5.font;
-			var size5 = s5.size;
-			var spacing5 = s5.dAdvanceX;
-			var lineGap5 = s5.dAdvanceY;
-			var hi5 = font5.height(size5);
-			s5.charHi = hi5;
-			s5.lineHeight = hi5 + lineGap5;
-			var len5 = content5.length;
-			var pos5 = 0;
-			var maxW5 = 0.;
-			var dW5 = 0.;
-			var dy5 = 0.;
-			var c5;
-			var letter5 = "";
-			var letterW5 = 0.;
-			var desend5 = false;
-			f5.linesWidth = [];
-			f5.spaces = [];
-			f5.scrollBreaks = [];
-			var noSpaces5 = 0;
-			var wordLen5 = 0;
-			var dSpace5 = 0.;
-			while(pos5 < len5) {
-				c5 = content5.charCodeAt(pos5++);
-				switch(c5) {
-				case 10:case 13:
-					if(letter5 == " ") {
-						dW5 -= letterW5 + spacing5;
-					}
-					if(pos5 != len5) {
-						dy5 += lineGap5 + hi5;
-					}
-					if(dW5 != 0.) {
-						dW5 -= spacing5 - 1;
-					}
-					if(dW5 > maxW5) {
-						maxW5 = dW5;
-					}
-					f5.linesWidth.push(dW5);
-					dW5 = 0.;
-					letterW5 = 0.;
-					if(pos5 != len5 - 1) {
-						desend5 = false;
-					}
-					f5.spaces.push(noSpaces5);
-					noSpaces5 = 0;
-					wordLen5 = 0;
-					dSpace5 = 0.;
-					break;
-				case 103:case 106:case 112:case 113:case 121:
-					var noStop10 = true;
-					if(f5.wrapWidth != null) {
-						if(dW5 > f5.wrapWidth) {
-							if(pos5 != len5) {
-								dy5 += lineGap5 + hi5;
-							}
-							maxW5 = f5.wrapWidth;
-							f5.linesWidth.push(dW5 - dSpace5 - spacing5);
-							dSpace5 = 0.;
-							dW5 = 0.;
-							letterW5 = 0.;
-							if(pos5 != len5 - 1) {
-								desend5 = false;
-							}
-							if(noSpaces5 > 0) {
-								--noSpaces5;
-							}
-							f5.spaces.push(noSpaces5);
-							noSpaces5 = 0;
-							pos5 -= wordLen5 - 1;
-							f5.scrollBreaks.push(pos5);
-							--pos5;
-							dW5 += spacing5 / 2;
-							wordLen5 = 0;
-							noStop10 = false;
-						}
-					}
-					if(noStop10) {
-						letter5 = String.fromCharCode(c5);
-						letterW5 = font5.width(size5,letter5);
-						dW5 += letterW5;
-						dW5 += spacing5;
-						dSpace5 += letterW5 + spacing5;
-						desend5 = true;
-						++wordLen5;
-					}
-					break;
-				default:
-					var noStop11 = true;
-					if(f5.wrapWidth != null) {
-						if(dW5 > f5.wrapWidth) {
-							if(pos5 != len5) {
-								dy5 += lineGap5 + hi5;
-							}
-							maxW5 = f5.wrapWidth;
-							f5.linesWidth.push(dW5 - dSpace5 - spacing5);
-							dSpace5 = 0.;
-							dW5 = 0.;
-							letterW5 = 0.;
-							if(pos5 != len5 - 1) {
-								desend5 = false;
-							}
-							if(noSpaces5 > 0) {
-								--noSpaces5;
-							}
-							f5.spaces.push(noSpaces5);
-							noSpaces5 = 0;
-							pos5 -= wordLen5 - 1;
-							f5.scrollBreaks.push(pos5);
-							--pos5;
-							dW5 += spacing5 / 2;
-							wordLen5 = 0;
-							noStop11 = true;
-						}
-					}
-					if(noStop11) {
-						letter5 = String.fromCharCode(c5);
-						if(letter5 == " ") {
-							dSpace5 = 0.;
-							wordLen5 = 0;
-							++noSpaces5;
-						} else {
-							++wordLen5;
-						}
-						letterW5 = font5.width(size5,letter5);
-						dW5 += letterW5;
-						dW5 += spacing5;
-						dSpace5 += letterW5 + spacing5;
-					}
-				}
-			}
-			if(letter5 == " ") {
-				--noSpaces5;
-			}
-			f5.spaces.push(noSpaces5);
-			dy5 += hi5;
-			if(desend5) {
-				dy5 += hi5 / 6;
-			}
-			if(dW5 != 0.) {
-				dW5 -= spacing5 - 1;
-			}
-			if(dW5 > maxW5) {
-				maxW5 = dW5;
-			}
-			f5.linesWidth.push(dW5);
-			f5.width = maxW5;
-			f5.height = dy5;
-			this.sundayTxt.x = 10;
-			this.thursdayTxt.x = mainWid - 10 - this.thursdayTxt.width;
-			this.sundayTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-			this.thursdayTxt.fontStyle.hAlign = simpleText_HAlign.RIGHT;
-		} else {
-			this.sundayTxt.fontStyle.size = 20;
-			this.thursdayTxt.fontStyle.size = 20;
-			this.sundayTxt.x = mainWid / 2 - this.sundayTxt.width - dw;
-			this.thursdayTxt.x = mainWid / 2 + dw;
-		}
-		this.isLeft = false;
-		if(mainWid < this.salsaClassesTxt.width || mainHi < this.salsaClassesTxt.height + 30) {
-			this.salsaClassesTxt.fontStyle.size = 12;
-			this.salsaClassesTxt.x = 10;
-			this.salsaClassesTxt.fontStyle.dAdvanceY = 0.;
-			this.salsaClassesTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-			this.titleTxt.x = 10;
-			this.titleTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-			this.contactTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-			this.isLeft = true;
-		} else {
-			this.salsaClassesTxt.fontStyle.size = 20;
-			this.salsaClassesTxt.x = mainWid / 2 - this.salsaClassesTxt.width / 2;
-			this.salsaClassesTxt.fontStyle.dAdvanceY = -4.;
-			this.salsaClassesTxt.fontStyle.hAlign = simpleText_HAlign.CENTRE;
-			this.titleTxt.fontStyle.hAlign = simpleText_HAlign.CENTRE;
-			this.contactTxt.fontStyle.hAlign = simpleText_HAlign.CENTRE;
-		}
-		if(mainWid < this.sundayTxt.width + this.thursdayTxt.width) {
-			this.sundayTxt.fontStyle.alpha = 0.;
-			this.thursdayTxt.fontStyle.alpha = 0.;
-			this.salsaClassesTxt.fontStyle.alpha = 1.;
-		} else {
-			this.sundayTxt.fontStyle.alpha = 1.;
-			this.thursdayTxt.fontStyle.alpha = 1.;
-			this.salsaClassesTxt.fontStyle.alpha = 0.;
-		}
-		this.img = kha_Assets.images.westCountrySalsa2icon2;
-		var h2 = this.img.get_height() + this.sundayTxt.height;
-		this.dh = (mainHi - h2) / 3;
-		if(this.dh < 5) {
-			this.scale = -(30 - mainHi + this.sundayTxt.height) / this.img.get_height();
-			h2 = this.img.get_height() * this.scale + this.sundayTxt.height;
-			this.dh = (mainHi - h2) / 3;
-		} else {
-			this.scale = 1.;
-		}
-		if(this.scale * this.img.get_width() + 40 > mainWid) {
-			this.scale = mainWid / (this.img.get_width() + 40);
-		}
-		this.imgX = mainWid / 2 - this.scale * this.img.get_width() / 2 | 0;
-		var dy6 = this.dh * 2 + this.img.get_height() * this.scale;
-		if(this.scale < 0.2) {
-			dy6 = this.titleTxt.height + 15;
-			this.contactTxt.y = this.titleTxt.height + this.titleTxt.y - this.contactTxt.height * 0.3;
-		} else if(this.img.get_height() * this.scale < this.contactTxt.width + 50) {
-			this.contactTxt.fontStyle.size = 16;
-			var f6 = this.contactTxt;
-			var s6 = f6.fontStyle;
-			var content6 = f6.content;
-			var font6 = s6.font;
-			var size6 = s6.size;
-			var spacing6 = s6.dAdvanceX;
-			var lineGap6 = s6.dAdvanceY;
-			var hi6 = font6.height(size6);
-			s6.charHi = hi6;
-			s6.lineHeight = hi6 + lineGap6;
-			var len6 = content6.length;
-			var pos6 = 0;
-			var maxW6 = 0.;
-			var dW6 = 0.;
-			var dy7 = 0.;
-			var c6;
-			var letter6 = "";
-			var letterW6 = 0.;
-			var desend6 = false;
-			f6.linesWidth = [];
-			f6.spaces = [];
-			f6.scrollBreaks = [];
-			var noSpaces6 = 0;
-			var wordLen6 = 0;
-			var dSpace6 = 0.;
-			while(pos6 < len6) {
-				c6 = content6.charCodeAt(pos6++);
-				switch(c6) {
-				case 10:case 13:
-					if(letter6 == " ") {
-						dW6 -= letterW6 + spacing6;
-					}
-					if(pos6 != len6) {
-						dy7 += lineGap6 + hi6;
-					}
-					if(dW6 != 0.) {
-						dW6 -= spacing6 - 1;
-					}
-					if(dW6 > maxW6) {
-						maxW6 = dW6;
-					}
-					f6.linesWidth.push(dW6);
-					dW6 = 0.;
-					letterW6 = 0.;
-					if(pos6 != len6 - 1) {
-						desend6 = false;
-					}
-					f6.spaces.push(noSpaces6);
-					noSpaces6 = 0;
-					wordLen6 = 0;
-					dSpace6 = 0.;
-					break;
-				case 103:case 106:case 112:case 113:case 121:
-					var noStop12 = true;
-					if(f6.wrapWidth != null) {
-						if(dW6 > f6.wrapWidth) {
-							if(pos6 != len6) {
-								dy7 += lineGap6 + hi6;
-							}
-							maxW6 = f6.wrapWidth;
-							f6.linesWidth.push(dW6 - dSpace6 - spacing6);
-							dSpace6 = 0.;
-							dW6 = 0.;
-							letterW6 = 0.;
-							if(pos6 != len6 - 1) {
-								desend6 = false;
-							}
-							if(noSpaces6 > 0) {
-								--noSpaces6;
-							}
-							f6.spaces.push(noSpaces6);
-							noSpaces6 = 0;
-							pos6 -= wordLen6 - 1;
-							f6.scrollBreaks.push(pos6);
-							--pos6;
-							dW6 += spacing6 / 2;
-							wordLen6 = 0;
-							noStop12 = false;
-						}
-					}
-					if(noStop12) {
-						letter6 = String.fromCharCode(c6);
-						letterW6 = font6.width(size6,letter6);
-						dW6 += letterW6;
-						dW6 += spacing6;
-						dSpace6 += letterW6 + spacing6;
-						desend6 = true;
-						++wordLen6;
-					}
-					break;
-				default:
-					var noStop13 = true;
-					if(f6.wrapWidth != null) {
-						if(dW6 > f6.wrapWidth) {
-							if(pos6 != len6) {
-								dy7 += lineGap6 + hi6;
-							}
-							maxW6 = f6.wrapWidth;
-							f6.linesWidth.push(dW6 - dSpace6 - spacing6);
-							dSpace6 = 0.;
-							dW6 = 0.;
-							letterW6 = 0.;
-							if(pos6 != len6 - 1) {
-								desend6 = false;
-							}
-							if(noSpaces6 > 0) {
-								--noSpaces6;
-							}
-							f6.spaces.push(noSpaces6);
-							noSpaces6 = 0;
-							pos6 -= wordLen6 - 1;
-							f6.scrollBreaks.push(pos6);
-							--pos6;
-							dW6 += spacing6 / 2;
-							wordLen6 = 0;
-							noStop13 = true;
-						}
-					}
-					if(noStop13) {
-						letter6 = String.fromCharCode(c6);
-						if(letter6 == " ") {
-							dSpace6 = 0.;
-							wordLen6 = 0;
-							++noSpaces6;
-						} else {
-							++wordLen6;
-						}
-						letterW6 = font6.width(size6,letter6);
-						dW6 += letterW6;
-						dW6 += spacing6;
-						dSpace6 += letterW6 + spacing6;
-					}
-				}
-			}
-			if(letter6 == " ") {
-				--noSpaces6;
-			}
-			f6.spaces.push(noSpaces6);
-			dy7 += hi6;
-			if(desend6) {
-				dy7 += hi6 / 6;
-			}
-			if(dW6 != 0.) {
-				dW6 -= spacing6 - 1;
-			}
-			if(dW6 > maxW6) {
-				maxW6 = dW6;
-			}
-			f6.linesWidth.push(dW6);
-			f6.width = maxW6;
-			f6.height = dy7;
-			var tmp = this.scale * this.img.get_height();
-			this.contactTxt.y = tmp + this.dh;
-			dy6 += 8;
-		} else {
-			var tmp1 = this.scale * this.img.get_height() + this.dh - this.contactTxt.height;
-			this.contactTxt.y = tmp1 - 5;
-		}
-		if(!this.isLeft) {
-			this.contactTxt.x = mainWid / 2 - this.contactTxt.width / 2;
-		} else {
-			this.contactTxt.x = 10;
-			this.titleTxt.fontStyle.hAlign = simpleText_HAlign.LEFT;
-			this.titleTxt.x = 10;
-		}
-		this.salsaClassesTxt.y = dy6;
-		this.thursdayTxt.y = dy6;
-		this.sundayTxt.y = dy6;
+		var size = mainHi > mainWid ? mainWid : mainHi;
+		var scale = size / 768;
+		var spacing = 30 * scale;
+		var midW = mainWid / 2;
+		this.scalableImage.scale = scale;
+		this.sundayScalable.set_scale(scale);
+		this.thursdayScalable.set_scale(scale);
+		this.contactScalable.set_scale(scale);
+		var dh = (mainHi - this.scalableImage.get_height() - this.thursdayScalable.get_height() - spacing) / 2;
+		var dwc = (mainWid - this.scalableImage.get_width()) / 2;
+		this.scalableImage.x = dwc;
+		this.scalableImage.y = dh * 0.66666;
+		var tmp = this.sundayScalable.get_width();
+		this.sundayTxt.x = mainWid / 2 - spacing - tmp;
+		var tmp1 = dh * 0.66666 + this.scalableImage.get_height();
+		this.sundayTxt.y = tmp1 + spacing * 0.66666;
+		this.thursdayTxt.x = midW + spacing;
+		this.thursdayTxt.y = this.sundayTxt.y;
+		var tmp2 = this.contactScalable.get_width() / 2;
+		this.contactTxt.x = midW - tmp2;
+		var tmp3 = this.scalableImage.y + this.scalableImage.get_height();
+		var tmp4 = this.contactScalable.get_height();
+		this.contactTxt.y = tmp3 - tmp4;
 		this.localWid = mainWid;
 		this.localHi = mainHi;
 		this.dirty();
@@ -30892,14 +30203,14 @@ westCountrySalsa_WestCountrySalsa2.prototype = {
 		var salsaThursdays = new westCountrySalsa_SalsaThursdays();
 		this.thursdayTxt = salsaThursdays.txt;
 		this.allTxt.push(this.thursdayTxt);
-		var salsaClasses = new westCountrySalsa_SalsaClasses();
-		this.salsaClassesTxt = salsaClasses.txt;
-		this.allTxt.push(this.salsaClassesTxt);
-		var title = new westCountrySalsa_Title();
-		this.titleTxt = title.txt;
 		var contact = new westCountrySalsa_Contact();
 		this.contactTxt = contact.txt;
 		this.allTxt.push(this.contactTxt);
+		this.img = kha_Assets.images.westCountrySalsa2icon2;
+		this.scalableImage = new simpleText_ScalableImage(this.img);
+		this.sundayScalable = new simpleText_ScalableText(this.sundayTxt);
+		this.thursdayScalable = new simpleText_ScalableText(this.thursdayTxt);
+		this.contactScalable = new simpleText_ScalableText(this.contactTxt);
 	}
 	,dirty: function() {
 		var _g = 0;
@@ -30917,7 +30228,7 @@ westCountrySalsa_WestCountrySalsa2.prototype = {
 		var hit = this.accurate;
 		var str = simpleText__$SimpleText_SimpleText_$Impl_$.hitString(this.sundayTxt,x,y,this.selection,hit,highlight);
 		if(str != "") {
-			haxe_Log.trace("hit " + Std.string(this.selection) + " = " + str,{ fileName : "WestCountrySalsa2.hx", lineNumber : 248, className : "westCountrySalsa.WestCountrySalsa2", methodName : "checkTextHit"});
+			haxe_Log.trace("hit " + Std.string(this.selection) + " = " + str,{ fileName : "WestCountrySalsa2.hx", lineNumber : 109, className : "westCountrySalsa.WestCountrySalsa2", methodName : "checkTextHit"});
 			this.dirty();
 		}
 	}
@@ -30934,321 +30245,7 @@ westCountrySalsa_WestCountrySalsa2.prototype = {
 		g2.clear(kha__$Color_Color_$Impl_$._new(-6590415));
 		g2.set_color(-1);
 		g2.set_opacity(1.);
-		if(this.scale > 0.2) {
-			g2.drawScaledImage(this.img,this.imgX,this.dh,this.img.get_width() * this.scale | 0,this.img.get_height() * this.scale | 0);
-		} else {
-			if(this.localWid < 520) {
-				this.titleTxt.wrapWidth = 200;
-				var f = this.titleTxt;
-				var s = f.fontStyle;
-				var content = f.content;
-				var font = s.font;
-				var size = s.size;
-				var spacing = s.dAdvanceX;
-				var lineGap = s.dAdvanceY;
-				var hi = font.height(size);
-				s.charHi = hi;
-				s.lineHeight = hi + lineGap;
-				var len = content.length;
-				var pos = 0;
-				var maxW = 0.;
-				var dW = 0.;
-				var dy = 0.;
-				var c;
-				var letter = "";
-				var letterW = 0.;
-				var desend = false;
-				f.linesWidth = [];
-				f.spaces = [];
-				f.scrollBreaks = [];
-				var noSpaces = 0;
-				var wordLen = 0;
-				var dSpace = 0.;
-				while(pos < len) {
-					c = content.charCodeAt(pos++);
-					switch(c) {
-					case 10:case 13:
-						if(letter == " ") {
-							dW -= letterW + spacing;
-						}
-						if(pos != len) {
-							dy += lineGap + hi;
-						}
-						if(dW != 0.) {
-							dW -= spacing - 1;
-						}
-						if(dW > maxW) {
-							maxW = dW;
-						}
-						f.linesWidth.push(dW);
-						dW = 0.;
-						letterW = 0.;
-						if(pos != len - 1) {
-							desend = false;
-						}
-						f.spaces.push(noSpaces);
-						noSpaces = 0;
-						wordLen = 0;
-						dSpace = 0.;
-						break;
-					case 103:case 106:case 112:case 113:case 121:
-						var noStop = true;
-						if(f.wrapWidth != null) {
-							if(dW > f.wrapWidth) {
-								if(pos != len) {
-									dy += lineGap + hi;
-								}
-								maxW = f.wrapWidth;
-								f.linesWidth.push(dW - dSpace - spacing);
-								dSpace = 0.;
-								dW = 0.;
-								letterW = 0.;
-								if(pos != len - 1) {
-									desend = false;
-								}
-								if(noSpaces > 0) {
-									--noSpaces;
-								}
-								f.spaces.push(noSpaces);
-								noSpaces = 0;
-								pos -= wordLen - 1;
-								f.scrollBreaks.push(pos);
-								--pos;
-								dW += spacing / 2;
-								wordLen = 0;
-								noStop = false;
-							}
-						}
-						if(noStop) {
-							letter = String.fromCharCode(c);
-							letterW = font.width(size,letter);
-							dW += letterW;
-							dW += spacing;
-							dSpace += letterW + spacing;
-							desend = true;
-							++wordLen;
-						}
-						break;
-					default:
-						var noStop1 = true;
-						if(f.wrapWidth != null) {
-							if(dW > f.wrapWidth) {
-								if(pos != len) {
-									dy += lineGap + hi;
-								}
-								maxW = f.wrapWidth;
-								f.linesWidth.push(dW - dSpace - spacing);
-								dSpace = 0.;
-								dW = 0.;
-								letterW = 0.;
-								if(pos != len - 1) {
-									desend = false;
-								}
-								if(noSpaces > 0) {
-									--noSpaces;
-								}
-								f.spaces.push(noSpaces);
-								noSpaces = 0;
-								pos -= wordLen - 1;
-								f.scrollBreaks.push(pos);
-								--pos;
-								dW += spacing / 2;
-								wordLen = 0;
-								noStop1 = true;
-							}
-						}
-						if(noStop1) {
-							letter = String.fromCharCode(c);
-							if(letter == " ") {
-								dSpace = 0.;
-								wordLen = 0;
-								++noSpaces;
-							} else {
-								++wordLen;
-							}
-							letterW = font.width(size,letter);
-							dW += letterW;
-							dW += spacing;
-							dSpace += letterW + spacing;
-						}
-					}
-				}
-				if(letter == " ") {
-					--noSpaces;
-				}
-				f.spaces.push(noSpaces);
-				dy += hi;
-				if(desend) {
-					dy += hi / 6;
-				}
-				if(dW != 0.) {
-					dW -= spacing - 1;
-				}
-				if(dW > maxW) {
-					maxW = dW;
-				}
-				f.linesWidth.push(dW);
-				f.width = maxW;
-				f.height = dy;
-			} else {
-				this.titleTxt.wrapWidth = 520;
-				var f1 = this.titleTxt;
-				var s1 = f1.fontStyle;
-				var content1 = f1.content;
-				var font1 = s1.font;
-				var size1 = s1.size;
-				var spacing1 = s1.dAdvanceX;
-				var lineGap1 = s1.dAdvanceY;
-				var hi1 = font1.height(size1);
-				s1.charHi = hi1;
-				s1.lineHeight = hi1 + lineGap1;
-				var len1 = content1.length;
-				var pos1 = 0;
-				var maxW1 = 0.;
-				var dW1 = 0.;
-				var dy1 = 0.;
-				var c1;
-				var letter1 = "";
-				var letterW1 = 0.;
-				var desend1 = false;
-				f1.linesWidth = [];
-				f1.spaces = [];
-				f1.scrollBreaks = [];
-				var noSpaces1 = 0;
-				var wordLen1 = 0;
-				var dSpace1 = 0.;
-				while(pos1 < len1) {
-					c1 = content1.charCodeAt(pos1++);
-					switch(c1) {
-					case 10:case 13:
-						if(letter1 == " ") {
-							dW1 -= letterW1 + spacing1;
-						}
-						if(pos1 != len1) {
-							dy1 += lineGap1 + hi1;
-						}
-						if(dW1 != 0.) {
-							dW1 -= spacing1 - 1;
-						}
-						if(dW1 > maxW1) {
-							maxW1 = dW1;
-						}
-						f1.linesWidth.push(dW1);
-						dW1 = 0.;
-						letterW1 = 0.;
-						if(pos1 != len1 - 1) {
-							desend1 = false;
-						}
-						f1.spaces.push(noSpaces1);
-						noSpaces1 = 0;
-						wordLen1 = 0;
-						dSpace1 = 0.;
-						break;
-					case 103:case 106:case 112:case 113:case 121:
-						var noStop2 = true;
-						if(f1.wrapWidth != null) {
-							if(dW1 > f1.wrapWidth) {
-								if(pos1 != len1) {
-									dy1 += lineGap1 + hi1;
-								}
-								maxW1 = f1.wrapWidth;
-								f1.linesWidth.push(dW1 - dSpace1 - spacing1);
-								dSpace1 = 0.;
-								dW1 = 0.;
-								letterW1 = 0.;
-								if(pos1 != len1 - 1) {
-									desend1 = false;
-								}
-								if(noSpaces1 > 0) {
-									--noSpaces1;
-								}
-								f1.spaces.push(noSpaces1);
-								noSpaces1 = 0;
-								pos1 -= wordLen1 - 1;
-								f1.scrollBreaks.push(pos1);
-								--pos1;
-								dW1 += spacing1 / 2;
-								wordLen1 = 0;
-								noStop2 = false;
-							}
-						}
-						if(noStop2) {
-							letter1 = String.fromCharCode(c1);
-							letterW1 = font1.width(size1,letter1);
-							dW1 += letterW1;
-							dW1 += spacing1;
-							dSpace1 += letterW1 + spacing1;
-							desend1 = true;
-							++wordLen1;
-						}
-						break;
-					default:
-						var noStop3 = true;
-						if(f1.wrapWidth != null) {
-							if(dW1 > f1.wrapWidth) {
-								if(pos1 != len1) {
-									dy1 += lineGap1 + hi1;
-								}
-								maxW1 = f1.wrapWidth;
-								f1.linesWidth.push(dW1 - dSpace1 - spacing1);
-								dSpace1 = 0.;
-								dW1 = 0.;
-								letterW1 = 0.;
-								if(pos1 != len1 - 1) {
-									desend1 = false;
-								}
-								if(noSpaces1 > 0) {
-									--noSpaces1;
-								}
-								f1.spaces.push(noSpaces1);
-								noSpaces1 = 0;
-								pos1 -= wordLen1 - 1;
-								f1.scrollBreaks.push(pos1);
-								--pos1;
-								dW1 += spacing1 / 2;
-								wordLen1 = 0;
-								noStop3 = true;
-							}
-						}
-						if(noStop3) {
-							letter1 = String.fromCharCode(c1);
-							if(letter1 == " ") {
-								dSpace1 = 0.;
-								wordLen1 = 0;
-								++noSpaces1;
-							} else {
-								++wordLen1;
-							}
-							letterW1 = font1.width(size1,letter1);
-							dW1 += letterW1;
-							dW1 += spacing1;
-							dSpace1 += letterW1 + spacing1;
-						}
-					}
-				}
-				if(letter1 == " ") {
-					--noSpaces1;
-				}
-				f1.spaces.push(noSpaces1);
-				dy1 += hi1;
-				if(desend1) {
-					dy1 += hi1 / 6;
-				}
-				if(dW1 != 0.) {
-					dW1 -= spacing1 - 1;
-				}
-				if(dW1 > maxW1) {
-					maxW1 = dW1;
-				}
-				f1.linesWidth.push(dW1);
-				f1.width = maxW1;
-				f1.height = dy1;
-			}
-			if(!this.isLeft) {
-				this.titleTxt.x = this.localWid / 2 - this.titleTxt.width / 2;
-			}
-			simpleText__$SimpleText_SimpleText_$Impl_$.render(this.titleTxt,g2);
-		}
+		this.scalableImage.render(g2);
 		var count = 0;
 		var _g = 0;
 		var _g1 = this.allTxt;
@@ -31362,27 +30359,27 @@ kha_Scheduler.startTime = 0;
 kha_Shaders.painter_colored_fragData0 = "s198:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gaGlnaHAgaW50OwoKdmFyeWluZyBoaWdocCB2ZWM0IGZyYWdtZW50Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9GcmFnRGF0YVswXSA9IGZyYWdtZW50Q29sb3I7Cn0KCg";
 kha_Shaders.painter_colored_fragData1 = "s192:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp2YXJ5aW5nIHZlYzQgZnJhZ21lbnRDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX0ZyYWdEYXRhWzBdID0gZnJhZ21lbnRDb2xvcjsKfQoK";
 kha_Shaders.painter_colored_fragData2 = "s210:I3ZlcnNpb24gMzAwIGVzCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7CgpvdXQgdmVjNCBGcmFnQ29sb3I7CmluIHZlYzQgZnJhZ21lbnRDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIEZyYWdDb2xvciA9IGZyYWdtZW50Q29sb3I7Cn0KCg";
-kha_Shaders.painter_colored_vertData0 = "s331:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgZnJhZ21lbnRDb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
-kha_Shaders.painter_colored_vertData1 = "s374:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
-kha_Shaders.painter_colored_vertData2 = "s354:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWM0IGZyYWdtZW50Q29sb3I7CmluIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
 kha_Shaders.painter_image_fragData0 = "s471:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gaGlnaHAgaW50OwoKdW5pZm9ybSBoaWdocCBzYW1wbGVyMkQgdGV4OwoKdmFyeWluZyBoaWdocCB2ZWMyIHRleENvb3JkOwp2YXJ5aW5nIGhpZ2hwIHZlYzQgY29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBoaWdocCB2ZWM0IHRleGNvbG9yID0gdGV4dHVyZTJEKHRleCwgdGV4Q29vcmQpICogY29sb3I7CiAgICBoaWdocCB2ZWMzIF8zMiA9IHRleGNvbG9yLnh5eiAqIGNvbG9yLnc7CiAgICB0ZXhjb2xvciA9IHZlYzQoXzMyLngsIF8zMi55LCBfMzIueiwgdGV4Y29sb3Iudyk7CiAgICBnbF9GcmFnRGF0YVswXSA9IHRleGNvbG9yOwp9Cgo";
 kha_Shaders.painter_image_fragData1 = "s444:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCnZhcnlpbmcgdmVjMiB0ZXhDb29yZDsKdmFyeWluZyB2ZWM0IGNvbG9yOwoKdm9pZCBtYWluKCkKewogICAgdmVjNCB0ZXhjb2xvciA9IHRleHR1cmUyRCh0ZXgsIHRleENvb3JkKSAqIGNvbG9yOwogICAgdmVjMyBfMzIgPSB0ZXhjb2xvci54eXogKiBjb2xvci53OwogICAgdGV4Y29sb3IgPSB2ZWM0KF8zMi54LCBfMzIueSwgXzMyLnosIHRleGNvbG9yLncpOwogICAgZ2xfRnJhZ0RhdGFbMF0gPSB0ZXhjb2xvcjsKfQoK";
 kha_Shaders.painter_image_fragData2 = "s452:I3ZlcnNpb24gMzAwIGVzCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCmluIHZlYzIgdGV4Q29vcmQ7CmluIHZlYzQgY29sb3I7Cm91dCB2ZWM0IEZyYWdDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIHZlYzQgdGV4Y29sb3IgPSB0ZXh0dXJlKHRleCwgdGV4Q29vcmQpICogY29sb3I7CiAgICB2ZWMzIF8zMiA9IHRleGNvbG9yLnh5eiAqIGNvbG9yLnc7CiAgICB0ZXhjb2xvciA9IHZlYzQoXzMyLngsIF8zMi55LCBfMzIueiwgdGV4Y29sb3Iudyk7CiAgICBGcmFnQ29sb3IgPSB0ZXhjb2xvcjsKfQoK";
-kha_Shaders.painter_image_vertData0 = "s415:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSB2ZWMyIHRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgY29sb3I7CmF0dHJpYnV0ZSB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
-kha_Shaders.painter_image_vertData1 = "s479:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247CnZhcnlpbmcgbWVkaXVtcCB2ZWM0IGNvbG9yOwphdHRyaWJ1dGUgbWVkaXVtcCB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
-kha_Shaders.painter_image_vertData2 = "s444:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWMyIHRleENvb3JkOwppbiBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247Cm91dCBtZWRpdW1wIHZlYzQgY29sb3I7CmluIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICB0ZXhDb29yZCA9IHRleFBvc2l0aW9uOwogICAgY29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
+kha_Shaders.painter_colored_vertData0 = "s331:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgZnJhZ21lbnRDb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
+kha_Shaders.painter_colored_vertData1 = "s374:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
+kha_Shaders.painter_colored_vertData2 = "s354:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWM0IGZyYWdtZW50Q29sb3I7CmluIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
 kha_Shaders.painter_text_fragData0 = "s351:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gaGlnaHAgaW50OwoKdW5pZm9ybSBoaWdocCBzYW1wbGVyMkQgdGV4OwoKdmFyeWluZyBoaWdocCB2ZWM0IGZyYWdtZW50Q29sb3I7CnZhcnlpbmcgaGlnaHAgdmVjMiB0ZXhDb29yZDsKCnZvaWQgbWFpbigpCnsKICAgIGdsX0ZyYWdEYXRhWzBdID0gdmVjNChmcmFnbWVudENvbG9yLnh5eiwgdGV4dHVyZTJEKHRleCwgdGV4Q29vcmQpLnggKiBmcmFnbWVudENvbG9yLncpOwp9Cgo";
 kha_Shaders.painter_text_fragData1 = "s340:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCnZhcnlpbmcgdmVjNCBmcmFnbWVudENvbG9yOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9GcmFnRGF0YVswXSA9IHZlYzQoZnJhZ21lbnRDb2xvci54eXosIHRleHR1cmUyRCh0ZXgsIHRleENvb3JkKS54ICogZnJhZ21lbnRDb2xvci53KTsKfQoK";
 kha_Shaders.painter_text_fragData2 = "s348:I3ZlcnNpb24gMzAwIGVzCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCm91dCB2ZWM0IEZyYWdDb2xvcjsKaW4gdmVjNCBmcmFnbWVudENvbG9yOwppbiB2ZWMyIHRleENvb3JkOwoKdm9pZCBtYWluKCkKewogICAgRnJhZ0NvbG9yID0gdmVjNChmcmFnbWVudENvbG9yLnh5eiwgdGV4dHVyZSh0ZXgsIHRleENvb3JkKS54ICogZnJhZ21lbnRDb2xvci53KTsKfQoK";
+kha_Shaders.painter_image_vertData0 = "s415:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSB2ZWMyIHRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgY29sb3I7CmF0dHJpYnV0ZSB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
+kha_Shaders.painter_image_vertData1 = "s479:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247CnZhcnlpbmcgbWVkaXVtcCB2ZWM0IGNvbG9yOwphdHRyaWJ1dGUgbWVkaXVtcCB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
+kha_Shaders.painter_image_vertData2 = "s444:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWMyIHRleENvb3JkOwppbiBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247Cm91dCBtZWRpdW1wIHZlYzQgY29sb3I7CmluIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICB0ZXhDb29yZCA9IHRleFBvc2l0aW9uOwogICAgY29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
+kha_Shaders.painter_text_vertData0 = "s436:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSB2ZWMyIHRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgdGV4Q29vcmQgPSB0ZXhQb3NpdGlvbjsKICAgIGZyYWdtZW50Q29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
+kha_Shaders.painter_text_vertData1 = "s500:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247CnZhcnlpbmcgbWVkaXVtcCB2ZWM0IGZyYWdtZW50Q29sb3I7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgdGV4Q29vcmQgPSB0ZXhQb3NpdGlvbjsKICAgIGZyYWdtZW50Q29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
+kha_Shaders.painter_text_vertData2 = "s466:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWMyIHRleENvb3JkOwppbiBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247Cm91dCBtZWRpdW1wIHZlYzQgZnJhZ21lbnRDb2xvcjsKaW4gbWVkaXVtcCB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
 kha_Shaders.painter_video_fragData0 = "s471:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gaGlnaHAgaW50OwoKdW5pZm9ybSBoaWdocCBzYW1wbGVyMkQgdGV4OwoKdmFyeWluZyBoaWdocCB2ZWMyIHRleENvb3JkOwp2YXJ5aW5nIGhpZ2hwIHZlYzQgY29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBoaWdocCB2ZWM0IHRleGNvbG9yID0gdGV4dHVyZTJEKHRleCwgdGV4Q29vcmQpICogY29sb3I7CiAgICBoaWdocCB2ZWMzIF8zMiA9IHRleGNvbG9yLnh5eiAqIGNvbG9yLnc7CiAgICB0ZXhjb2xvciA9IHZlYzQoXzMyLngsIF8zMi55LCBfMzIueiwgdGV4Y29sb3Iudyk7CiAgICBnbF9GcmFnRGF0YVswXSA9IHRleGNvbG9yOwp9Cgo";
 kha_Shaders.painter_video_fragData1 = "s444:I3ZlcnNpb24gMTAwCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCnZhcnlpbmcgdmVjMiB0ZXhDb29yZDsKdmFyeWluZyB2ZWM0IGNvbG9yOwoKdm9pZCBtYWluKCkKewogICAgdmVjNCB0ZXhjb2xvciA9IHRleHR1cmUyRCh0ZXgsIHRleENvb3JkKSAqIGNvbG9yOwogICAgdmVjMyBfMzIgPSB0ZXhjb2xvci54eXogKiBjb2xvci53OwogICAgdGV4Y29sb3IgPSB2ZWM0KF8zMi54LCBfMzIueSwgXzMyLnosIHRleGNvbG9yLncpOwogICAgZ2xfRnJhZ0RhdGFbMF0gPSB0ZXhjb2xvcjsKfQoK";
 kha_Shaders.painter_video_fragData2 = "s452:I3ZlcnNpb24gMzAwIGVzCnByZWNpc2lvbiBtZWRpdW1wIGZsb2F0OwpwcmVjaXNpb24gbWVkaXVtcCBpbnQ7Cgp1bmlmb3JtIG1lZGl1bXAgc2FtcGxlcjJEIHRleDsKCmluIHZlYzIgdGV4Q29vcmQ7CmluIHZlYzQgY29sb3I7Cm91dCB2ZWM0IEZyYWdDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIHZlYzQgdGV4Y29sb3IgPSB0ZXh0dXJlKHRleCwgdGV4Q29vcmQpICogY29sb3I7CiAgICB2ZWMzIF8zMiA9IHRleGNvbG9yLnh5eiAqIGNvbG9yLnc7CiAgICB0ZXhjb2xvciA9IHZlYzQoXzMyLngsIF8zMi55LCBfMzIueiwgdGV4Y29sb3Iudyk7CiAgICBGcmFnQ29sb3IgPSB0ZXhjb2xvcjsKfQoK";
 kha_Shaders.painter_video_vertData0 = "s415:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSB2ZWMyIHRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgY29sb3I7CmF0dHJpYnV0ZSB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
 kha_Shaders.painter_video_vertData1 = "s479:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247CnZhcnlpbmcgbWVkaXVtcCB2ZWM0IGNvbG9yOwphdHRyaWJ1dGUgbWVkaXVtcCB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBjb2xvciA9IHZlcnRleENvbG9yOwp9Cgo";
 kha_Shaders.painter_video_vertData2 = "s444:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWMyIHRleENvb3JkOwppbiBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247Cm91dCBtZWRpdW1wIHZlYzQgY29sb3I7CmluIG1lZGl1bXAgdmVjNCB2ZXJ0ZXhDb2xvcjsKCnZvaWQgbWFpbigpCnsKICAgIGdsX1Bvc2l0aW9uID0gcHJvamVjdGlvbk1hdHJpeCAqIHZlYzQodmVydGV4UG9zaXRpb24sIDEuMCk7CiAgICB0ZXhDb29yZCA9IHRleFBvc2l0aW9uOwogICAgY29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
-kha_Shaders.painter_text_vertData0 = "s436:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1hdDQgcHJvamVjdGlvbk1hdHJpeDsKCmF0dHJpYnV0ZSB2ZWMzIHZlcnRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSB2ZWMyIHRleFBvc2l0aW9uOwp2YXJ5aW5nIHZlYzQgZnJhZ21lbnRDb2xvcjsKYXR0cmlidXRlIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgdGV4Q29vcmQgPSB0ZXhQb3NpdGlvbjsKICAgIGZyYWdtZW50Q29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
-kha_Shaders.painter_text_vertData1 = "s500:I3ZlcnNpb24gMTAwCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKYXR0cmlidXRlIG1lZGl1bXAgdmVjMyB2ZXJ0ZXhQb3NpdGlvbjsKdmFyeWluZyBtZWRpdW1wIHZlYzIgdGV4Q29vcmQ7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247CnZhcnlpbmcgbWVkaXVtcCB2ZWM0IGZyYWdtZW50Q29sb3I7CmF0dHJpYnV0ZSBtZWRpdW1wIHZlYzQgdmVydGV4Q29sb3I7Cgp2b2lkIG1haW4oKQp7CiAgICBnbF9Qb3NpdGlvbiA9IHByb2plY3Rpb25NYXRyaXggKiB2ZWM0KHZlcnRleFBvc2l0aW9uLCAxLjApOwogICAgdGV4Q29vcmQgPSB0ZXhQb3NpdGlvbjsKICAgIGZyYWdtZW50Q29sb3IgPSB2ZXJ0ZXhDb2xvcjsKfQoK";
-kha_Shaders.painter_text_vertData2 = "s466:I3ZlcnNpb24gMzAwIGVzCgp1bmlmb3JtIG1lZGl1bXAgbWF0NCBwcm9qZWN0aW9uTWF0cml4OwoKaW4gbWVkaXVtcCB2ZWMzIHZlcnRleFBvc2l0aW9uOwpvdXQgbWVkaXVtcCB2ZWMyIHRleENvb3JkOwppbiBtZWRpdW1wIHZlYzIgdGV4UG9zaXRpb247Cm91dCBtZWRpdW1wIHZlYzQgZnJhZ21lbnRDb2xvcjsKaW4gbWVkaXVtcCB2ZWM0IHZlcnRleENvbG9yOwoKdm9pZCBtYWluKCkKewogICAgZ2xfUG9zaXRpb24gPSBwcm9qZWN0aW9uTWF0cml4ICogdmVjNCh2ZXJ0ZXhQb3NpdGlvbiwgMS4wKTsKICAgIHRleENvb3JkID0gdGV4UG9zaXRpb247CiAgICBmcmFnbWVudENvbG9yID0gdmVydGV4Q29sb3I7Cn0KCg";
 kha_System.renderListeners = [];
 kha_System.foregroundListeners = [];
 kha_System.resumeListeners = [];
@@ -31787,7 +30784,7 @@ tweenx909_TweenX._FINISH = 8;
 tweenx909_TweenX._STOP = 9;
 tweenx909_TweenX.idCounter = 0;
 westCountrySalsa_Contact.fontColor = -78592;
-westCountrySalsa_Contact.size = 18;
+westCountrySalsa_Contact.size = 20;
 westCountrySalsa_LatinoSundays.fontColor = -9879039;
 westCountrySalsa_LatinoSundays.size = 20;
 westCountrySalsa_SalsaClasses.fontColor = -9879039;

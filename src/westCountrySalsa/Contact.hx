@@ -5,7 +5,7 @@ import kha.Assets;
 import kha.Color;
 class Contact {
 	public static var fontColor: Int = 0xFFFECD00;
-	public static var size:      Int = 18;
+	public static var size:      Int = 20;
     public var content:     String = 
 "westcountrysalsa@gmail.com";
 	public var txt: SimpleText;
@@ -17,7 +17,7 @@ class Contact {
                                     ,   range:      new AbstractRange( { begin: 0, end: content.length } )
                                     ,   dAdvanceX:  5.
                                     ,   dAdvanceY:  -4.
-                                    ,   hAlign:     RIGHT
+                                    ,   hAlign:     CENTRE
                                     };
         txt =  new SimpleText({ x: 0., y: 0.
                             , fontStyle: fontStyle

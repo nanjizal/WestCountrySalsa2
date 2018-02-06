@@ -22,6 +22,7 @@ typedef FontStyle = {
     @:optional public var lineHeight:       Float;
     // character height
     @:optional public var charHi:           Float;
+    @:optional public var dirty:            Bool;
 }
 // Text Horizontal alignment
 enum HAlign {
@@ -109,6 +110,7 @@ abstract AbstractFontStyle( FontStyle ) to FontStyle from FontStyle {
     public inline 
     function new( s: FontStyle ){
         this = s;
+        this.dirty = true;
         hi();
     }
     public inline
@@ -118,6 +120,22 @@ abstract AbstractFontStyle( FontStyle ) to FontStyle from FontStyle {
         s.charHi = hi;
         s.lineHeight = hi + s.dAdvanceY;
         return hi;
+    }
+    public inline
+    function resize( newSize: Int ): Float{ 
+        var s = this;
+        var scale = newSize/s.size;
+        if( this.size != newSize ){
+            s.size = newSize;
+            s.dAdvanceX = s.dAdvanceX * scale;
+            s.dAdvanceY = s.dAdvanceY * scale;
+            s.dirty = true;
+        }
+        return scale;
+    }
+    public inline
+    function originalSizeScale( originalSize: Int, scale: Float ): Float {
+        return resize( Std.int( scale*originalSize ) );
     }
 }
 // Abstract around the Letter ( hitTest ) element, to help with selection
@@ -231,6 +249,7 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
         var wordLen = 0;
         // debug var word = '';
         var dSpace = 0.;  // distance since last space
+        trace( 'pos ' + pos + ' len ' + len );
         while( pos < len ){
             c = StringTools.fastCodeAt( content, pos++ );
             switch( c ){
@@ -281,7 +300,7 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
                     }
                 default:
                     var noStop = true;
-                    if( f.wrapWidth != null ){ if( dW > f.wrapWidth ) {
+                    if( f.wrapWidth != null && f.wrapWidth != 0 ){ if( dW > f.wrapWidth ) {
                         if( pos != len ) dy += lineGap + hi;
                         maxW = f.wrapWidth;
                         f.linesWidth.push( dW - dSpace - spacing );
@@ -344,7 +363,7 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
     function render( g2: Graphics, ?begin: Bool = false  ): String{
         var f = this;
         var s = f.fontStyle;
-
+        if( s.dirty ) f.dirty = true;
         // style setting
         var font    = s.font;
         var size    = s.size;
@@ -535,6 +554,7 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
         }
         if( begin ) g2.end();
         f.dirty = false;
+        f.fontStyle.dirty = false;
         return '';
     }
     // logic to align text horizontally
@@ -850,5 +870,67 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
         }
         render( img.g2, true );
         return img;
+    }
+}
+class ScalableText {
+    public var txt:     SimpleText;
+    var fontScale:      Float = 1.;
+    var origSize:       Int;
+    var origWrapWidth:  Float;
+    public function new( txt_: SimpleText ){
+        txt = txt_;
+        origSize = txt.fontStyle.size;
+        origWrapWidth = txt.wrapWidth;
+    }
+    public var scale( get, set ): Float;
+    public function get_scale():Float {
+        return fontScale;
+    }
+    public function set_scale( val: Float ):Float {
+        fontScale = val;
+        txt.fontStyle.originalSizeScale( origSize, fontScale );
+        if( txt.fontStyle.dirty ) txt.wrapWidth = origWrapWidth*fontScale;
+        return fontScale;
+    }
+    public var height( get, never ): Float;
+    function get_height(): Float {
+        if( txt.height == null || txt.fontStyle.dirty ) txt.calculateDimensions();
+        return txt.height;
+    }
+    public var width( get, never ): Float;
+    function get_width(): Float {
+        if( txt.width == null || txt.fontStyle.dirty ) txt.calculateDimensions();
+        return txt.width;
+    }
+    public function getScaleForWidth( val: Float ): Float {
+        return val/width;
+    }
+    public function getScaleForHeight( val: Float ): Float {
+        return val/height;
+    }
+}
+class ScalableImage{
+    public var scale: Float = 1;
+    public var x: Float = 0;
+    public var y: Float = 0;
+    public var alpha: Float = 1;
+    public var img: Image;
+    public function new( img_: Image ) {
+        img = img_;
+    }
+    public var height( get, never ): Float;
+    public function get_height(): Float {
+        return img.height*scale;
+    }
+    public var width( get, never ): Float;
+    public function get_width(): Float {
+        return img.width*scale;
+    }
+    public function render( g2: Graphics ){
+        if( alpha == 0 ) return;
+        g2.opacity = alpha;
+        g2.color = Color.White;
+        g2.drawScaledImage( img, x, y, img.width * scale, img.height * scale );
+        g2.opacity = 1.;
     }
 }

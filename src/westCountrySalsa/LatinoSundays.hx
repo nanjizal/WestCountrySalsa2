@@ -9,7 +9,6 @@ class LatinoSundays {
 "LATINO SUNDAYS
 @ The Bell Inn, Bath
 
-
 from 11th February
 
 £5 entry
@@ -25,7 +24,7 @@ with Justin & Roxana
                                     ,   alpha:      1.
                                     ,   range:      new AbstractRange( { begin: 0, end: content.length } )
                                     ,   dAdvanceX:  5.
-                                    ,   dAdvanceY:  -4.
+                                    ,   dAdvanceY:  0.
                                     ,   hAlign:     RIGHT
                                     };
         txt =  new SimpleText({ x: 0., y: 0.

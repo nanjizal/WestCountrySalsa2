@@ -6,7 +6,7 @@ import js.html.CanvasElement;
 import kha.System;
 import westCountrySalsa.WestCountrySalsa2;
 class Main {
-    public static var wid: Int = 300;
+    public static var wid: Int;
     public static var hi:  Int;
     public static var resize: Void->Void;
     public static function main() {        
@@ -26,7 +26,7 @@ class Main {
         resize = function() {
             canvas.width = Std.int(window.innerWidth * window.devicePixelRatio);
             canvas.height = Std.int(window.innerHeight * window.devicePixelRatio);
-            //wid = Std.int( canvas.width/2 );
+            wid = Std.int( canvas.width/2 );
             hi = Std.int( canvas.height/2 );
             canvas.style.width = document.documentElement.clientWidth + "px";
             canvas.style.height = document.documentElement.clientHeight + "px";
