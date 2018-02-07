@@ -249,7 +249,6 @@ abstract SimpleText( TextAttributes ) to TextAttributes from TextAttributes {
         var wordLen = 0;
         // debug var word = '';
         var dSpace = 0.;  // distance since last space
-        trace( 'pos ' + pos + ' len ' + len );
         while( pos < len ){
             c = StringTools.fastCodeAt( content, pos++ );
             switch( c ){
