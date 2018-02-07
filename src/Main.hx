@@ -26,8 +26,8 @@ class Main {
         resize = function() {
             canvas.width = Std.int(window.innerWidth * window.devicePixelRatio);
             canvas.height = Std.int(window.innerHeight * window.devicePixelRatio);
-            wid = Std.int( canvas.width/2 );
-            hi = Std.int( canvas.height/2 );
+            wid = Std.int( canvas.width/window.devicePixelRatio );
+            hi = Std.int( canvas.height/window.devicePixelRatio );
             canvas.style.width = document.documentElement.clientWidth + "px";
             canvas.style.height = document.documentElement.clientHeight + "px";
         }
